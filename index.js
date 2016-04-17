@@ -1,21 +1,21 @@
 var pg = require('pg');
 var cool = require('cool-ascii-faces');
 var express = require('express');
-var bodyParser  = require("body-parser"),
-var methodOverride = require("method-override");
 var app = express();
+/*var bodyParser  = require("body-parser"),
+var methodOverride = require("method-override");
 var server   = http.createServer(app)
-
+*/
 /*
 var conString = "postgres://YourUserName:YourPassword@localhost:5432/YourDatabase";
 var client = new pg.Client(conString);
 client.connect();
 */
-
+/*
 app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
-
+*/
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -24,11 +24,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
+/*app.get('/', function(request, response) {
   response.send(process.env.DATABASE_URL);
-});
+});*/
 
-app.get('/cool2', function(request, response) {
+app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
@@ -44,20 +44,3 @@ app.get('/db', function (request, response) {
     });
   });
 })
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-
-
-var router = express.Router();
-
-router.get('/', function(req, res) {  
-   res.send("Hello World!");
-});
-
-app.use(router);
-
-exports.findAllUsers = function (request, response) {
-  // body...
-}
