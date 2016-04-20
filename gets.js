@@ -15,7 +15,4 @@ module.exports = function() {
 	   		}
 	    });
 	}
-	return{
-		getAllUsers: getAllUsers
-	}
-}();
+};
