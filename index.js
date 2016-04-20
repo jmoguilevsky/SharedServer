@@ -49,10 +49,10 @@ app.get('/users', function (request, response) {
 
 */
 
-router.route('/users').get(getAllUser);
+router.route('/users').get(getAllUsers);
 module.exports = function() {
 
-	function getAllUser(request,response){
+	function getAllUsers(request,response){
 		var query = "select row_to_json(row(nombre,alias)) from usuario;";
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	    client.query(query, function(err, result) {
@@ -65,5 +65,8 @@ module.exports = function() {
 	       /*response.render('pages/db', {results: result.rows} );*/ 
 	   		}
 	    });
+	}
+	return{
+		getAllUsers: getAllUsers
 	}
 };
