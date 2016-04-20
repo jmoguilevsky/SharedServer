@@ -1,4 +1,5 @@
 module.exports = function() {
+	var pg = require('pg');
 
 	function getAllUsers(request,response){
 		var query = "select row_to_json(row(nombre,alias)) from usuario;";

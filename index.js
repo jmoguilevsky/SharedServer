@@ -1,7 +1,7 @@
 var pg = require('pg');
 var cool = require('cool-ascii-faces');
 var express = require('express');
-var gets = require('./gets.js');
+var gets = require('./gets');
 var app = express();
 var router = express.Router();
 
