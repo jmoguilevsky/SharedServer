@@ -51,4 +51,4 @@ app.get('/users', function (request, response) {
 
 */
 
-router.route('/users').get(gets.getAllUsers);
+router.route('/users').get(getAllUsers);
