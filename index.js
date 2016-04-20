@@ -1,8 +1,6 @@
 var pg = require('pg');
 var cool = require('cool-ascii-faces');
 var express = require('express');
-var bodyParser  = require("body-parser");
-var methodOverride = require("method-override");
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
