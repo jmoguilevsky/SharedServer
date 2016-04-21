@@ -12,8 +12,8 @@ module.exports = function() {
 			"version" : version,
 			"count" : "count"
 		} 
-		console.log(newObject);
-		response.send(newObject);
+		console.log(json);
+		response.send(json);
 	}
 
 	function getAllUsers(request,response){
