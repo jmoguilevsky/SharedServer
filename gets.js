@@ -7,13 +7,25 @@ module.exports = function() {
 		var count = items.users.length;
 		console.log(count);
 		var json =  {};
-		json = items;
+		json.users = items;
 		json.metadata =  {
 			"version" : version,
 			"count" : count
 		} 
 		console.log(json);
 		response.send(json);
+	}
+
+	function formatUsers(response, items){
+		var users = [];
+		items.forEach(function(item){
+			users.push({
+				"user": item
+				});
+			}
+		});
+		console.log(users);
+		return users;
 	}
 
 	function getAllUsers(request,response){
@@ -29,7 +41,7 @@ module.exports = function() {
 					console.log(result);
 					console.log(result.rows);
 					console.log(result.rows[0]);
-					return addMetadata(response, result.rows[0]);
+					return addMetadata(response, formatUsers(result.rows[0]));
 				}
 			});
 		});
