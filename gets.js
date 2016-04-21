@@ -13,7 +13,7 @@ module.exports = function() {
 	}
 
 	function getAllUsers(request,response){
-		var query = "select array_to_json(array_agg(row_to_json(rows))) from ( select * from usuario) rows;";
+		var query = "select array_to_json(array_agg(row_to_json(row))) from ( select * from usuario) as row;";
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query(query, function(err, result) {
 				done();
