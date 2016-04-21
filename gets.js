@@ -38,7 +38,7 @@ module.exports = function() {
 					console.log(result);
 					console.log(result.rows);
 					console.log(result.rows[0]);
-					return addMetadata(response, formatUsers(result.rows[0]));
+					return addMetadata(response, result.rows[0]);
 				}
 			});
 		});
