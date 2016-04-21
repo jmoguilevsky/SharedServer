@@ -3,7 +3,7 @@ module.exports = function() {
 	var version =  0.1;
 
 	function addMetadata(response, result){
-		var count = result.length;
+		var count = result.users.length;
 		result.metadata = {
 			"version" : version,
 			"count" : count
