@@ -7,7 +7,7 @@ module.exports = function() {
 		var count = items.users.length;
 		console.log(count);
 		var json =  {};
-		json.users = items;
+		json = items;
 		json.metadata =  {
 			"version" : version,
 			"count" : count
@@ -19,10 +19,7 @@ module.exports = function() {
 	function formatUsers(response, items){
 		var users = [];
 		items.forEach(function(item){
-			users.push({
-				"user": item
-				});
-			}
+			users.push(item);
 		});
 		console.log(users);
 		return users;
