@@ -12,7 +12,7 @@ module.exports = function() {
 			"count" : count
 		}
 		var newObject =  "";
-		newObject.metadata = row.metadata;
+		newObject.metadata = rows.metadata;
 		newObject.users = rows.users;
 		console.log(newObject);
 		response.send(rows.metadata);
