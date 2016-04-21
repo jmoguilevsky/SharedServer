@@ -2,7 +2,7 @@ module.exports = function() {
 	var pg = require('pg');
 	var version =  0.1;
 
-	function addMetadata(result){
+	function addMetadata(response, result){
 		var count = result.rows.length;
 		result.metadata = {
 			"version" : version,
@@ -20,7 +20,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					return addMetadata(result);
+					return addMetadata(response, result);
 				}
 			});
 		});
