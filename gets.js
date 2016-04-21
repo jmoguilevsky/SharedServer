@@ -12,7 +12,7 @@ module.exports = function() {
 	}
 
 	function getAllUsers(request,response){
-		var query = "select array_to_json(array_agg(row_to_json(row))) from ( select * from usuario) as row;";
+		var query = "select array_to_json(array_agg(row_to_json(row))) as users from ( select * from usuario) as row;";
 		console.log(query);
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query(query, function(err, result) {
@@ -22,7 +22,7 @@ module.exports = function() {
 				} else {
 					//response.send(result.rows) ;
 					console.log(result);
-					return addMetadata(response, result);
+					return addMetadata(response, result.rows);
 				}
 			});
 		});
