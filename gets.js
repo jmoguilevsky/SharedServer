@@ -8,6 +8,7 @@ module.exports = function() {
 			"version" : "hola",
 			"count" :"hola"
 		}
+		console.log(result);
 		response.send(result);
 	}
 
