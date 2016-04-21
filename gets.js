@@ -5,10 +5,11 @@ module.exports = function() {
 	function addMetadata(response, result){
 		var count = result.length;
 		result.metadata = {
-			"version" : "hola",
-			"count" :"hola"
+			"version" : version,
+			"count" : count
 		}
 		console.log(result);
+		console.log(count);
 		response.send(result.metadata);
 	}
 
