@@ -7,7 +7,7 @@ module.exports = function() {
 		var count = items.users.length;
 		console.log(count);
 		var json =  {};
-		json = items;
+		json.users = items;
 		json.metadata =  {
 			"version" : version,
 			"count" : count
