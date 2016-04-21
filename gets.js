@@ -28,7 +28,8 @@ module.exports = function() {
 					//response.send(result.rows) ;
 					console.log(result);
 					console.log(result.rows);
-					return addMetadata(response, result['users']);
+					console.log(result.rows[0]);
+					return addMetadata(response, result.rows[0]);
 				}
 			});
 		});
