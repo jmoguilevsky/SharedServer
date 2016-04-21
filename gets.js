@@ -4,11 +4,12 @@ module.exports = function() {
 
 	function addMetadata(response, result){
 		var count = result.rows.length;
-		result.metadata = {
+		var jsonToReturn = result.rows;
+		jsonToReturn.metadata = {
 			"version" : version,
 			 "count":count
 		}
-		response.send(result);
+		response.send(jsonToReturn);
 	}
 
 	function getAllUsers(request,response){
