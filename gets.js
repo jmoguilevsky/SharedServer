@@ -2,15 +2,20 @@ module.exports = function() {
 	var pg = require('pg');
 	var version =  0.1;
 
-	function addMetadata(response, result){
-		var count = result.users.length;
-		result.metadata = {
+	function addMetadata(response, rows){
+		console.log(rows);
+		var count = rows.length;
+		console.log(count);
+
+		rows.metadata = {
 			"version" : version,
 			"count" : count
 		}
-		console.log(result);
-		console.log(count);
-		response.send(result.metadata);
+		var newObject =  "";
+		newObject.metadata = row.metadata;
+		newObject.users = rows.users;
+		console.log(newObject);
+		response.send(rows.metadata);
 	}
 
 	function getAllUsers(request,response){
@@ -23,7 +28,6 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					console.log(result);
 					return addMetadata(response, result.rows);
 				}
 			});
