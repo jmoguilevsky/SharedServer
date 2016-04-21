@@ -3,13 +3,12 @@ module.exports = function() {
 	var version =  0.1;
 
 	function addMetadata(response, result){
-		var count = result.rows.length;
-		var jsonToReturn = result.rows;
-		jsonToReturn.metadata = {
+		var count = result.length;
+		result.metadata = {
 			"version" : version,
 			 "count":count
 		}
-		response.send(jsonToReturn);
+		response.send(result);
 	}
 
 	function getAllUsers(request,response){
@@ -22,6 +21,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
+					console.log(result);
 					return addMetadata(response, result);
 				}
 			});
