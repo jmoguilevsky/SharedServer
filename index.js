@@ -37,7 +37,7 @@ app.get('/db', function (request, response) {
 
 
 app.get('/users', function (request, response) {
-    var query = "select row_to_json(row(*)) from usuario;";
+    var query = "select row_to_json(usuario) from usuario;";
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query(query, function(err, result) {
 			done();
