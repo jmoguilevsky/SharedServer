@@ -4,13 +4,13 @@ module.exports = function() {
 
 	function addMetadata(response, items){
 		console.log(items);
-		//var count = items.length;
+		var count = items.length;
 		//console.log(count);
 		var json =  {};
 		json.users = items;
 		json.metadata =  {
 			"version" : version,
-			"count" : "count"
+			"count" : count
 		} 
 		console.log(json);
 		response.send(json);
