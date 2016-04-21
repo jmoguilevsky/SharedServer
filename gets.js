@@ -11,9 +11,9 @@ module.exports = function() {
 			"version" : version,
 			"count" : count
 		}
-		var newObject =  "";
-		newObject.metadata = rows.metadata;
+		var newObject =  [];
 		newObject.users = rows.users;
+		newObject.metadata = rows.metadata;
 		console.log(newObject);
 		response.send(rows.metadata);
 	}
