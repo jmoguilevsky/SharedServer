@@ -2,18 +2,16 @@ module.exports = function() {
 	var pg = require('pg');
 	var version =  0.1;
 
-	function addMetadata(response, rows){
-		console.log(rows);
-		var count = rows.length;
+	function addMetadata(response, items){
+		console.log(items);
+		var count = items.length;
 		console.log(count);
-
-		rows.metadata = {
+		var json =  {};
+		json.users = items;
+		json.metadata =  {
 			"version" : version,
 			"count" : count
-		}
-		var newObject =  [];
-		newObject.users = rows;
-		newObject.metadata = rows.metadata;
+		} 
 		console.log(newObject);
 		response.send(newObject);
 	}
@@ -28,7 +26,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					return addMetadata(response, result.rows);
+					return addMetadata(response, result.rows['users']);
 				}
 			});
 		});
