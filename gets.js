@@ -12,10 +12,10 @@ module.exports = function() {
 			"count" : count
 		}
 		var newObject =  [];
-		newObject.users = rows.users;
+		newObject.users = rows;
 		newObject.metadata = rows.metadata;
 		console.log(newObject);
-		response.send(rows.metadata);
+		response.send(newObject);
 	}
 
 	function getAllUsers(request,response){
