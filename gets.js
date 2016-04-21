@@ -9,7 +9,7 @@ module.exports = function() {
 			"count" :"hola"
 		}
 		console.log(result);
-		response.send(result);
+		response.send(result.metadata);
 	}
 
 	function getAllUsers(request,response){
