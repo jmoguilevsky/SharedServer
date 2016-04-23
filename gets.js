@@ -19,10 +19,12 @@ module.exports = function() {
 	function formatUsers(response, items){
 		var users = [];
 		items.forEach(function(item){
+			console.log('item');
 			console.log(item);
 			//users.push(item);
 		});
-		console.log(users);
+		//console.log('users');
+		//console.log(users);
 		//return users;
 		return items;
 	}
@@ -37,8 +39,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					console.log(result);
-					console.log(result.rows);
+					console.log('rows');
 					console.log(result.rows[0]);
 					return addMetadata(response, formatUsers(result.rows[0]));
 				}
