@@ -18,17 +18,13 @@ module.exports = function() {
 
 	function formatUsers(items){
 		var users = [];
-		console.log('items');
-		console.log(items);
 		items.forEach(function(item){
-			console.log('item');
-			console.log(item);
 			users.push({ user: item });
 		});
 		//console.log('users');
 		//console.log(users);
 		//return users;
-		return items;
+		return users;
 	}
 
 	function getAllUsers(request,response){
