@@ -19,10 +19,12 @@ module.exports = function() {
 	function formatUsers(response, items){
 		var users = [];
 		items.forEach(function(item){
-			users.push(item);
+			console.log(item);
+			//users.push(item);
 		});
 		console.log(users);
-		return users;
+		//return users;
+		return items;
 	}
 
 	function getAllUsers(request,response){
