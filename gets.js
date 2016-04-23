@@ -4,7 +4,7 @@ module.exports = function() {
 
 	function addMetadata(response, items){
 		console.log(items);
-		var count = items.users.length;
+		var count = items.length;
 		console.log(count);
 		var json =  {};
 		json.users = items;
