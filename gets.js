@@ -23,7 +23,10 @@ module.exports = function() {
 		items.forEach(function(item){
 			console.log('item');
 			console.log(item);
-			//users.push(item);
+			users.push({
+				user: item
+			});
+			}
 		});
 		//console.log('users');
 		//console.log(users);
