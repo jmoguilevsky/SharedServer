@@ -18,6 +18,8 @@ module.exports = function() {
 
 	function formatUsers(response, items){
 		var users = [];
+		console.log('items');
+		console.log(items);
 		items.forEach(function(item){
 			console.log('item');
 			console.log(item);
@@ -39,7 +41,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					console.log('rows[0][users]');
+					//console.log('rows[0][users]');
 					console.log(result.rows[0]['users']);
 					return addMetadata(response, formatUsers(result.rows[0]['users']));
 				}
