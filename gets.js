@@ -16,7 +16,7 @@ module.exports = function() {
 		response.send(json);
 	}
 
-	function formatUsers(response, items){
+	function formatUsers(items){
 		var users = [];
 		console.log('items');
 		console.log(items);
@@ -41,9 +41,10 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
-					//console.log('rows[0][users]');
-					console.log(result.rows[0]['users']);
-					return addMetadata(response, formatUsers(result.rows[0]['users']));
+					console.log('users');
+					var users = result.rows[0]['users'];
+					console.log(users);
+					return addMetadata(response, formatUsers(items));
 				}
 			});
 		});
