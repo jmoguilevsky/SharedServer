@@ -44,7 +44,7 @@ module.exports = function() {
 					console.log('users');
 					var users = result.rows[0]['users'];
 					console.log(users);
-					return addMetadata(response, formatUsers(items));
+					return addMetadata(response, formatUsers(users));
 				}
 			});
 		});
