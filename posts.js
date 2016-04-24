@@ -4,7 +4,8 @@ module.exports = function() {
 
 
 	function postNewUser(request,response){
-		console.log(request.body);
+		console.log('request');
+		console.log(request);
 		/*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query(query, function(err, result) {
 				done();
