@@ -11,11 +11,14 @@ class MatchUser(object):
 		self.interests = [Interest(x) for x in json_dict["interests"]]
 
 	def __str__(self):
-		return  str(self.id) + "\n"+ \
-			self.name + "\n" + \
-			self.alias + "\n" + \
-			self.email + "\n" + \
-			str(self.interests)
+		return  "\nid: " + str(self.id) + "\n"+ \
+			"name: " + self.name + "\n" + \
+			"alias: " + self.alias + "\n" + \
+			"email: " + self.email + "\n" + \
+			"interests:" + str(self.interests) + "\n"
+
+	def __repr__(self):
+		return self.__str__()
 
 class Interest(object):
 	
