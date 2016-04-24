@@ -6,6 +6,7 @@ var app = express();
 var router = express.Router();
 
 var getUsers = gets.getAllUsers;
+var postUser = posts.postNewUser;
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -19,6 +20,6 @@ app.listen(app.get('port'), function() {
 });
 
 
-router.route('/users').get(getUsers).post(postNewUser);
+router.route('/users').get(getUsers).post(postUser);
 
 app.use(express.static(__dirname + '/public'), router);
