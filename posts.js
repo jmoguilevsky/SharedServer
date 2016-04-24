@@ -21,6 +21,7 @@ module.exports = function() {
 				}
 			});
 		});*/
+		response.send(400, "Wrong model");
 	}
 
 	return{
