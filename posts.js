@@ -1,5 +1,6 @@
 module.exports = function() {
 	var pg = require('pg');
+	
 	var version =  0.1;
 
 
