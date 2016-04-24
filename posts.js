@@ -7,6 +7,11 @@ module.exports = function() {
 	function postNewUser(request,response){
 		console.log('request body');
 		console.log(request.body);
+		var user = request.body.user;
+		var interests = request.body.user.interests;
+		var queryInsertUser = "insert into \"User\"(name, alias, email, latitude, longitude) "+
+								"values("+user.name + "," + user.alias + "," + user.email + "," + user.latitude + "," + user.longitude +");";
+		console.log(queryInsertUser);
 		/*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query(query, function(err, result) {
 				done();
