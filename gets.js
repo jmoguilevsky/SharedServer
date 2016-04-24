@@ -37,6 +37,7 @@ module.exports = function() {
 					console.error(err); response.send("Error " + err); 
 				} else {
 					//response.send(result.rows) ;
+					console.log(result);
 					console.log('users');
 					var users = result.rows[0]['users'];
 					console.log(users);
