@@ -1,6 +1,7 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var gets = require('./gets');
+var posts = require('./posts');
 var app = express();
 var router = express.Router();
 
@@ -18,6 +19,6 @@ app.listen(app.get('port'), function() {
 });
 
 
-router.route('/users').get(getUsers);
+router.route('/users').get(getUsers).post(postNewUser);
 
 app.use(express.static(__dirname + '/public'), router);
