@@ -28,7 +28,7 @@ module.exports = function() {
 	}
 
 	function getAllUsers(request,response){
-		var query = "SELECT array_to_json(array_agg(row_to_json(users))) from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users;";
+		var query = "SELECT array_to_json(array_agg(row_to_json(users))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users;";
 		console.log(query);
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query(query, function(err, result) {
