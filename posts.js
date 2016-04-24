@@ -21,7 +21,7 @@ module.exports = function() {
 				}
 			});
 		});*/
-		response.send(400, request);
+		response.send(201, request);
 	}
 
 	return{
