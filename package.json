@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "pg": "4.x",
+    "pg-transactions": "1.0.4",
     "ejs": "2.3.3",
     "express": "4.13.3",
     "method-override": "^2.1.2",
