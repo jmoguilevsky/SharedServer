@@ -52,9 +52,9 @@ module.exports = function() {
                                 return rollback(client, done, err);
                             }
                             console.log('Se guardo ok');
-                            client.query('COMMIT', client.end.bind(client));
                             status = 201;
                             body = 'termino todo bien';
+                            client.query('COMMIT', client.end.bind(client));
                         });
                     });
                 });
