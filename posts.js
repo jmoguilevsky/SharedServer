@@ -2,7 +2,8 @@ module.exports = function() {
     var pg = require('pg');
 
     var version = 0.1;
-    var rollback = function(client, done) {
+    var rollback = function(client, done, error) {
+    	console.log(error);
         client.query('ROLLBACK', function(err) {
             return done(err);
         });
@@ -28,7 +29,7 @@ module.exports = function() {
             client.query('BEGIN', function(err) {
                 if (err) return rollback(client, done);
                 client.query(insertUser, function(err) {
-                    if (err) return rollback(client, done);
+                    if (err) return rollback(client, done, err);
                     client.query(selectLastUser, function(err, result) {
                         if (err) return rollback(client, done);
                         console.log('New User Id' + result.rows[0]['id']);
