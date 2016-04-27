@@ -11,6 +11,9 @@ module.exports = function() {
 
 
     function postNewUser(request, response) {
+
+    	var status = 400;
+    	var body = 'Error';
         console.log('request body');
         //console.log(request.body);
         var user = request.body.user;
@@ -25,10 +28,13 @@ module.exports = function() {
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
-                if (err) return rollback(client, done, err);
+                if (err)  rollback(client, done, err);
                 console.log('insert user \n' + insertUser);
                 client.query(insertUser, function(err) {
-                    if (err) return rollback(client, done, err);
+                    if (err){ 
+                		body = 'Error al guardar el usuario';
+                    	return rollback(client, done, err);
+                	}
                     console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
                         if (err || result.rows === []) return rollback(client, done, err);
@@ -41,17 +47,20 @@ module.exports = function() {
                         });
 
                         client.query(interestsInserts, function(err, result) {
-                            if (err) return rollback(client, done, err);
+                            if (err){ 
+			            		body = 'Error al guardar los intereses';
+                            	return rollback(client, done, err);
+                            	}
                             console.log('Se guardo ok');
                             client.query('COMMIT', client.end.bind(client));
-                            response.status(201).send('termino todo bien');
+                            status = 201;
+                            body = 'termino todo bien';
                         });
-
                     });
                 });
             });
         });
-        response.send(400, 'error');
+        response.send(status, body);
     }
 
     return {
