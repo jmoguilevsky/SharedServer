@@ -42,13 +42,13 @@ module.exports = function() {
                         client.query(interestsInserts, function(err, result) {
                             if (err) return rollback(client, done);
                             console.log('Se guardo ok');
-                            response.send(201, 'ok');
+                            response.send(201, 'termino todo bien');
                         });
                     });
                 });
             });
         });
-        response.send(201, 'ok');
+        response.send(400, 'error');
     }
 
     return {
