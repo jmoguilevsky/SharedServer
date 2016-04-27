@@ -38,7 +38,10 @@ module.exports = function() {
                     }
                     console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
-                        if (err || result.rows === []) return rollback(client, done, err, response, status, body);
+                        if (err || result.rows === []){ 
+                        	body = 'Error al guardar el usuario';
+                        	return rollback(client, done, err, response, status, body);
+                        }
                         console.log('New User Id\n' + JSON.stringify(result));
                         idUser = result.rows[0]['id'];
 
