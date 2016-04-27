@@ -31,7 +31,7 @@ module.exports = function() {
                     if (err) return rollback(client, done, err);
                     client.query(selectLastUser, function(err, result) {
                         if (err) return rollback(client, done);
-                        console.log('New User Id\n' + result);
+                        console.log('New User Id\n' + JSON.stringify(result));
                         idUser = result.rows[0]['id'];
 
                         var interestsInserts = '';
