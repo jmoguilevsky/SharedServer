@@ -44,7 +44,7 @@ module.exports = function() {
                             if (err) return rollback(client, done, err);
                             console.log('Se guardo ok');
                             client.query('COMMIT', client.end.bind(client));
-                            response.send(201, 'termino todo bien');
+                            response.status(201).send('termino todo bien');
                         });
 
                     });
