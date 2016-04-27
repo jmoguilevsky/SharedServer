@@ -25,12 +25,13 @@ module.exports = function() {
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
-                if (err) return rollback(client, done);
+                if (err) return rollback(client, done, err);
                 console.log('insert user \n' + insertUser);
                 client.query(insertUser, function(err) {
                     if (err) return rollback(client, done, err);
+                    console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
-                        if (err) return rollback(client, done);
+                        if (err) return rollback(client, done, err);
                         console.log('New User Id\n' + JSON.stringify(result));
                         idUser = result.rows[0]['id'];
 
@@ -40,7 +41,7 @@ module.exports = function() {
                         });
 
                         client.query(interestsInserts, function(err, result) {
-                            if (err) return rollback(client, done);
+                            if (err) return rollback(client, done, err);
                             console.log('Se guardo ok');
                             client.query('COMMIT', client.end.bind(client));
                             response.send(201, 'termino todo bien');
