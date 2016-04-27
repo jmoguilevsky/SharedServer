@@ -2,7 +2,7 @@ module.exports = function() {
     var pg = require('pg');
 
     var version = 0.1;
-    var rollback = function(client, done, error, status, body) {
+    var rollback = function(client, done, error, response, status, body) {
         console.log(error);
         client.query('ROLLBACK', function(err) {
             done(err);
@@ -29,16 +29,16 @@ module.exports = function() {
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
-                if (err) return rollback(client, done, err, status, body);
+                if (err) return rollback(client, done, err, response, status, body);
                 console.log('insert user \n' + insertUser);
                 client.query(insertUser, function(err) {
                     if (err) {
                         body = 'Error al guardar el usuario';
-                        return rollback(client, done, err, status, body);
+                        return rollback(client, done, err, response, status, body);
                     }
                     console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
-                        if (err || result.rows === []) return rollback(client, done, err, status, body);
+                        if (err || result.rows === []) return rollback(client, done, err, response, status, body);
                         console.log('New User Id\n' + JSON.stringify(result));
                         idUser = result.rows[0]['id'];
 
@@ -50,7 +50,7 @@ module.exports = function() {
                         client.query(interestsInserts, function(err, result) {
                             if (err) {
                                 body = 'Error al guardar los intereses';
-                                return rollback(client, done, err, status, body);
+                                return rollback(client, done, err, response, status, body);
                             }
                             console.log('Se guardo ok');
                             status = 201;
