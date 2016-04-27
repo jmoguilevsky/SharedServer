@@ -20,7 +20,7 @@ module.exports = function() {
         var insertUser = 'INSERT INTO \"USER\"(name, alias, email, latitude, longitude) ' +
             'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\',' +
             	user.location.latitude + ',' + user.location.longitude + ');';
-        var selectLastUser = 'SELECT id from \"USER\" where email = \'' + user.email'\' ;';
+        var selectLastUser = 'SELECT id from \"USER\" where email = \' ' + user.email + '\' ;';
         var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
