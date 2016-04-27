@@ -1,8 +1,8 @@
 module.exports = function() {
     var pg = require('pg');
-
     var version = 0.1;
-    var rollback = function(client, done, error, response, status, body) {
+
+    function rollback(client, done, error, response, status, body) {
         console.log(error);
         client.query('ROLLBACK', function(err) {
             done(err);
@@ -57,7 +57,13 @@ module.exports = function() {
                             }
                             console.log('Se guardo ok');
                             status = 201;
-                            body = 'termino todo bien';
+                            user.id = idUser;
+
+                            body = {};
+                            body.user = user;
+                            body.metadata = {
+                            	version : version
+                            };
                             client.query('COMMIT', client.end.bind(client));
                             response.status(status).send(body);
                         });
