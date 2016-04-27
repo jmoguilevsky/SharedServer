@@ -60,7 +60,9 @@ module.exports = function() {
                 });
             });
         });
-        response.send(status, body);
+        console.log(status);
+        console.log(body);
+        response.status(status).send(body);
     }
 
     return {
