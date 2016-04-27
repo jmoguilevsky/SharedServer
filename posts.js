@@ -12,8 +12,8 @@ module.exports = function() {
 
     function postNewUser(request, response) {
 
-    	var status = 400;
-    	var body = 'Error';
+        var status = 400;
+        var body = 'Error';
         console.log('request body');
         //console.log(request.body);
         var user = request.body.user;
@@ -22,19 +22,19 @@ module.exports = function() {
 
         var insertUser = 'INSERT INTO \"USER\"(name, alias, email, latitude, longitude) ' +
             'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\',' +
-            	user.location.latitude + ',' + user.location.longitude + ');';
+            user.location.latitude + ',' + user.location.longitude + ');';
         var selectLastUser = 'SELECT id from \"USER\" where email = \'' + user.email + '\' ;';
         var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
-                if (err)  rollback(client, done, err);
+                if (err) rollback(client, done, err);
                 console.log('insert user \n' + insertUser);
                 client.query(insertUser, function(err) {
-                    if (err){ 
-                		body = 'Error al guardar el usuario';
-                    	return rollback(client, done, err);
-                	}
+                    if (err) {
+                        body = 'Error al guardar el usuario';
+                        return rollback(client, done, err);
+                    }
                     console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
                         if (err || result.rows === []) return rollback(client, done, err);
@@ -47,10 +47,10 @@ module.exports = function() {
                         });
 
                         client.query(interestsInserts, function(err, result) {
-                            if (err){ 
-			            		body = 'Error al guardar los intereses';
-                            	return rollback(client, done, err);
-                            	}
+                            if (err) {
+                                body = 'Error al guardar los intereses';
+                                return rollback(client, done, err);
+                            }
                             console.log('Se guardo ok');
                             client.query('COMMIT', client.end.bind(client));
                             status = 201;
