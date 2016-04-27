@@ -17,13 +17,13 @@ module.exports = function() {
 
         var insertUser = 'INSERT INTO \"USER\"(name, alias, email, latitude, longitude) ' +
             'VALUES ('
-        ' + user.name + '
+        ' + 'user.name' + '
         ', '
-        ' + user.alias + '
+        ' + 'user.alias' + '
         ', '
-        ' + user.email + '
+        ' + 'user.email' + '
         ',' + user.location.latitude + ',' + user.location.longitude + ');';
-        var selectLastUser = 'SELECT id from \"USER\" where email =' + email;
+        var selectLastUser = 'SELECT id from \"USER\" where email =' + user.email;
         var idUser = 0;
 
         var interestsInserts = '';
