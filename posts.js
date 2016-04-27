@@ -1,6 +1,5 @@
 module.exports = function() {
     var pg = require('pg');
-    var transaction = require('pg-transaction');
 
     var version = 0.1;
     var rollback = function(client, done) {
