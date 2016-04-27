@@ -20,7 +20,7 @@ module.exports = function() {
         var insertUser = 'INSERT INTO \"USER\"(name, alias, email, latitude, longitude) ' +
             'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\',' +
             	user.location.latitude + ',' + user.location.longitude + ');';
-        var selectLastUser = 'SELECT id from \"USER\" where email = \' ' + user.email + '\' ;';
+        var selectLastUser = 'SELECT id from \"USER\" where email = \'' + user.email + '\' ;';
         var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -31,7 +31,7 @@ module.exports = function() {
                     if (err) return rollback(client, done, err);
                     console.log('select user \n' + selectLastUser);
                     client.query(selectLastUser, function(err, result) {
-                        if (err) return rollback(client, done, err);
+                        if (err || result.rows === []) return rollback(client, done, err);
                         console.log('New User Id\n' + JSON.stringify(result));
                         idUser = result.rows[0]['id'];
 
