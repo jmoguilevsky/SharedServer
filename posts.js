@@ -56,16 +56,13 @@ module.exports = function() {
                                 return rollback(client, done, err, response, status, body);
                             }
                             console.log('Se guardo ok');
-                            status = 201;
                             user.id = idUser;
 
                             body = {};
                             body.user = user;
-                            body.metadata = {
-                            	version : version
-                            };
+                            body.metadata = request.body.metadata;
                             client.query('COMMIT', client.end.bind(client));
-                            response.status(status).send(body);
+                            response.status(201).send(body);
                         });
                     });
                 });
