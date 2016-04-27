@@ -22,12 +22,10 @@ module.exports = function() {
         var selectLastUser = 'SELECT id from \"USER\" where email =' + user.email;
         var idUser = 0;
 
-
-        console.log(insertUser);
-
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
                 if (err) return rollback(client, done);
+                console.log(insertUser);
                 client.query(insertUser, function(err) {
                     if (err) return rollback(client, done, err);
                     client.query(selectLastUser, function(err, result) {
@@ -43,8 +41,10 @@ module.exports = function() {
                         client.query(interestsInserts, function(err, result) {
                             if (err) return rollback(client, done);
                             console.log('Se guardo ok');
+      						client.query('COMMIT', client.end.bind(client));
                             response.send(201, 'termino todo bien');
                         });
+
                     });
                 });
             });
