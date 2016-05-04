@@ -90,14 +90,14 @@ module.exports = function() {
 
                         var interestsInserts = '';
 
-                        interests.forEach(function(interest) {
-                            var ok = insertUserInterest(interest, idUser, client);
+                        for (var i = interests.length - 1; i >= 0; i--) {
+                        	var interest = interests[i];
+                        	var ok = insertUserInterest(interest, idUser, client);
                             if (ok === false) {
                             	console.log('Hubo un error');
                                 return rollback(client, done, err, response, status, 'Error al guardar los intereses');
                             }
-                        });
-
+                        }
                         console.log('Se guardo ok');
                         user.id = idUser;
 
