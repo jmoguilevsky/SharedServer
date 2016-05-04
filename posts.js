@@ -47,6 +47,7 @@ module.exports = function() {
                     });
                 });
             } else {
+            	console.log('result\n'+result);
                 idInterest = result.rows[0]['id'];
             }
             client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
