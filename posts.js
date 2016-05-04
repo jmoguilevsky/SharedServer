@@ -47,7 +47,7 @@ module.exports = function() {
                     });
                 });
             } else {
-            	console.log('result\n'+JSON.stringify(result));
+                console.log('result\n' + JSON.stringify(result));
                 idInterest = result.rows[0]['id'];
             }
             client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
@@ -90,15 +90,16 @@ module.exports = function() {
 
                         var interestsInserts = '';
 
-                        for (var i = interests.length - 1; i >= 0; i--) {
-                        	var interest = interests[i];
-                        	var ok = insertUserInterest(interest, idUser, client);
+                        for (var i = 0; i < interests.length; i++) {
+                            var interest = interests[i];
+                            var ok = insertUserInterest(interest, idUser, client);
                             if (ok === false) {
-                            	console.log('Hubo un error');
+                                console.log('Hubo un error');
                                 return rollback(client, done, err, response, status, 'Error al guardar los intereses');
                             }
                         }
-                        console.log('Se guardo ok');
+
+                        console.log('Se guardo ok va por el interes i', i);
                         user.id = idUser;
 
                         body = {};
