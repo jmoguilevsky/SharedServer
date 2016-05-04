@@ -92,7 +92,7 @@ module.exports = function() {
         var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-            client.query('BEGIN', function(err) {
+            client.query('DO $$ BEGIN', function(err) {
                 if (err) return rollback(client, done, err, response, status, body);
                 client.query(queryInsertUser(user), function(err) {
                     if (err) {
@@ -124,7 +124,7 @@ module.exports = function() {
                         body = {};
                         body.user = user;
                         body.metadata = request.body.metadata;
-                        client.query('COMMIT', client.end.bind(client));
+                        client.query('END $$', client.end.bind(client));
                         response.status(201).send(body);
                     });
                 });
