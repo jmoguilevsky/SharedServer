@@ -70,9 +70,8 @@ module.exports = function() {
         console.log('user\n' + user);
         var interests = request.body.user.interests;
 
-        var selectLastUser =
-            //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
-            var idUser = 0;
+        //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
+        var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query('BEGIN', function(err) {
