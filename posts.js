@@ -37,7 +37,7 @@ module.exports = function() {
         //First I check if the Interest already exists
         var idInterest = 0;
         client.query(querSelectInterest(interest), function(err, result) {
-            if (result.rows === 0) {
+            if (result.rows.length === 0) {
                 client.query(queryInsertInterest(interest), function(err) {
                     if (err) {
                         return false;
