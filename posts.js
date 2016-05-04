@@ -33,15 +33,15 @@ module.exports = function() {
     };
 
     //returns a bool if the interest was saved, otherwise was an error
-    function insertUserInterest(interest, idUser, client, done, err, response, status, body) {
+    function insertUserInterest(interest, idUser, client, ok, assignOk) {
         //First I check if the Interest already exists
-        console.log('insert interest '+ JSON.stringify(interest));
+        console.log('insert interest ' + JSON.stringify(interest));
         var idInterest = 0;
         client.query(querSelectInterest(interest), function(err, result) {
             if (result.rows.length === 0) {
                 client.query(queryInsertInterest(interest), function(err) {
                     if (err) {
-                        return false;
+                        assignOk(ok, false);
                     }
                     client.query(querSelectInterest(interest), function(err, result) {
                         idInterest = result.rows[0]['id'];
@@ -53,11 +53,15 @@ module.exports = function() {
             }
             client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
                 if (err) {
-                    return false;
+                    assignOk(ok, false);
                 }
-                return true;
+                assignOk(ok, true);
             });
         });
+    }
+
+    function assignOk(ok, value) {
+        ok = value;
     }
 
 
@@ -93,14 +97,12 @@ module.exports = function() {
 
                         for (var i = 0; i < interests.length; i++) {
                             var interest = interests[i];
-                            var ok = insertUserInterest(interest, idUser, client);
-                            console.log('status insert'+ok);
-                            var wait = function () {
-                            	return true;
-                            };
-                            while( ok === undefined){
-                            	wait();
+                            var ok = undefined;
+                            ok = insertUserInterest(interest, idUser, client, ok, assignOk);
+                            while (ok === undefined) {
+                                continue;
                             }
+                            console.log('status insert' + ok);
                             if (ok === false) {
                                 console.log('Hubo un error');
                                 return rollback(client, done, err, response, status, 'Error al guardar los intereses');
