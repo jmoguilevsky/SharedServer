@@ -9,7 +9,8 @@ var router = express.Router();
 var getUsers = gets.getAllUsers;
 var postUser = posts.postNewUser;
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(express.bodyParser());
 
 app.set('port', (process.env.PORT || 5000));
 
