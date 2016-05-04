@@ -44,6 +44,7 @@ module.exports = function() {
         var idInterest = 0;
         client.query(querSelectInterest(interest), function(err, result) {
             if (result.rows.length === 0) {
+            	console.log('the interest didn\'t exist, i save it');
                 client.query(queryInsertInterestForUser(interest,idUser), function(err) {
                     if (err) {
                         return false;
