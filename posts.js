@@ -6,8 +6,13 @@ module.exports = function() {
         return 'select id from Interest where value =\'' + interest.value + '\' and category = \'' + interest.category + '\';'
     }
 
-    function queryInsertInterest(interest) {
-        return 'INSERT INTO Interest (category, value) values (\'' + interest.category + '\', \'' + interest.value + '\');'
+    function queryInsertInterestForUser(interest, idUser) {
+        return 'DO $$'+
+        		'DECLARE idNewInterest int;'+
+        		'INSERT INTO Interest (category, value) values (\'' + interest.category + '\', \'' + interest.value + '\')'+
+        		'RETURNING id INTO idNewInterest;'+
+        		'INSERT INTO UserInterest (idUser, idInterest) values (' + idUser + ', idNewInterest );'+
+        		'END $$';
     }
 
     function queryInsertUserInterest(idUser, idInterest) {
@@ -39,19 +44,10 @@ module.exports = function() {
         var idInterest = 0;
         client.query(querSelectInterest(interest), function(err, result) {
             if (result.rows.length === 0) {
-                client.query(queryInsertInterest(interest), function(err) {
+                client.query(queryInsertInterestForUser(interest,idUser), function(err) {
                     if (err) {
                         return false;
                     }
-                    client.query(querSelectInterest(interest), function(err, result) {
-                        idInterest = result.rows[0]['id'];
-                        client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
-                            if (err) {
-                                return false;
-                            }
-                            return true;
-                        });
-                    });
                 });
             } else {
                 console.log('interest id is \n' + result.rows[0]['id']);
