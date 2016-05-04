@@ -7,12 +7,12 @@ module.exports = function() {
     }
 
     function queryInsertInterestForUser(interest, idUser) {
-        return 'DO $$'+
-        		'DECLARE idNewInterest int;'+
-        		'INSERT INTO Interest (category, value) values (\'' + interest.category + '\', \'' + interest.value + '\')'+
-        		'RETURNING id INTO idNewInterest;'+
-        		'INSERT INTO UserInterest (idUser, idInterest) values (' + idUser + ', idNewInterest );'+
-        		'END $$';
+        return 'DO $$' +
+            'DECLARE idNewInterest int; BEGIN ' +
+            'INSERT INTO Interest (category, value) values (\'' + interest.category + '\', \'' + interest.value + '\')' +
+            'RETURNING id INTO idNewInterest;' +
+            'INSERT INTO UserInterest (idUser, idInterest) values (' + idUser + ', idNewInterest );' +
+            'END $$';
     }
 
     function queryInsertUserInterest(idUser, idInterest) {
@@ -42,25 +42,38 @@ module.exports = function() {
         //First I check if the Interest already exists
         console.log('insert interest ' + JSON.stringify(interest));
         var idInterest = 0;
+        //var insertInterests = "";
         client.query(querSelectInterest(interest), function(err, result) {
             if (result.rows.length === 0) {
-            	console.log('the interest didn\'t exist, i save it');
-                client.query(queryInsertInterestForUser(interest,idUser), function(err) {
+                console.log('the interest didn\'t exist, i save it');
+                //insertInterests += queryInsertInterestForUser(interest,idUser);
+
+                client.query(queryInsertInterestForUser(interest, idUser), function(err) {
                     if (err) {
-            			console.log('hubo un erro '+err);
+                        console.log('hubo un erro ' + err);
                         return false;
                     }
                 });
+
             } else {
                 console.log('interest id is \n' + result.rows[0]['id']);
                 idInterest = result.rows[0]['id'];
+                client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
+                    if (err) {
+                        return false;
+                    }
+                    return true;
+                });
+                //insertInterests += queryInsertUserInterest(idUser, idInterest);
             }
+            /*
             client.query(queryInsertUserInterest(idUser, idInterest), function(err) {
                 if (err) {
                     return false;
                 }
                 return true;
             });
+            */
         });
     }
 
