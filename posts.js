@@ -93,6 +93,7 @@ module.exports = function() {
                         interests.forEach(function(interest) {
                             var ok = insertUserInterest(interest, idUser, client);
                             if (ok === false) {
+                            	console.log('Hubo un error');
                                 return rollback(client, done, err, response, status, 'Error al guardar los intereses');
                             }
                         });
