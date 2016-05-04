@@ -47,6 +47,7 @@ module.exports = function() {
             	console.log('the interest didn\'t exist, i save it');
                 client.query(queryInsertInterestForUser(interest,idUser), function(err) {
                     if (err) {
+            			console.log('hubo un erro '+err);
                         return false;
                     }
                 });
