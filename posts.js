@@ -35,6 +35,7 @@ module.exports = function() {
     //returns a bool if the interest was saved, otherwise was an error
     function insertUserInterest(interest, idUser, client, done, err, response, status, body) {
         //First I check if the Interest already exists
+        console.log('insert interest '+ interest);
         var idInterest = 0;
         client.query(querSelectInterest(interest), function(err, result) {
             if (result.rows.length === 0) {
