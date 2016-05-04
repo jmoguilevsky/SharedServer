@@ -64,7 +64,7 @@ module.exports = function() {
 
         var status = 400;
         var body = 'Error';
-        console.log('request body\n'+request.body);
+        console.log('request body\n'+JSON.stringify(request));
         //console.log(request.body);
         var user = request.body.user;
         console.log('user\n' + user);
