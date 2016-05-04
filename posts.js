@@ -95,6 +95,12 @@ module.exports = function() {
                             var interest = interests[i];
                             var ok = insertUserInterest(interest, idUser, client);
                             console.log('status insert'+ok);
+                            var wait = function () {
+                            	return true;
+                            };
+                            while( ok === undefined){
+                            	wait();
+                            }
                             if (ok === false) {
                                 console.log('Hubo un error');
                                 return rollback(client, done, err, response, status, 'Error al guardar los intereses');
