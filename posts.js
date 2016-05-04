@@ -7,12 +7,11 @@ module.exports = function() {
     }
 
     function queryInsertInterestForUser(interest, idUser) {
-        return 'DO $$' +
-            'DECLARE idNewInterest int; BEGIN ' +
+        return 'DECLARE id'+interest.category+interest.value+' int; BEGIN ' +
             'INSERT INTO Interest (category, value) values (\'' + interest.category + '\', \'' + interest.value + '\')' +
-            'RETURNING id INTO idNewInterest;' +
-            'INSERT INTO UserInterest (idUser, idInterest) values (' + idUser + ', idNewInterest );' +
-            'END $$';
+            'RETURNING id INTO id'+interest.category+interest.value+';' +
+            'INSERT INTO UserInterest (idUser, idInterest) values (' + idUser + ', id'+interest.category+interest.value+' );' +
+            'END;';
     }
 
     function queryInsertUserInterest(idUser, idInterest) {
@@ -92,7 +91,7 @@ module.exports = function() {
         var idUser = 0;
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-            client.query('DO $$ BEGIN', function(err) {
+            client.query('DO $$; BEGIN', function(err) {
                 if (err) return rollback(client, done, err, response, status, body);
                 client.query(queryInsertUser(user), function(err) {
                     if (err) {
