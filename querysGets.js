@@ -20,6 +20,7 @@ module.exports = function() {
     return {
         getAllUsers: getAllUsers,
         getInterest: selectInterest,
-        getUserId: getUserId
+        getUserId: getUserId,
+        getUser : getUser
     }
 }();
