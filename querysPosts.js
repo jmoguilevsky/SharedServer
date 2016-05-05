@@ -37,7 +37,7 @@ module.exports = function() {
     }
 
     return {
-        insertUserWithInterest: queryInsertUserWithInterests,
+        insertUserWithInterests: queryInsertUserWithInterests,
         insertUserInterest: queryInsertUserInterest
     }
 }();
