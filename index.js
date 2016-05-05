@@ -7,6 +7,7 @@ var app = express();
 var router = express.Router();
 
 var getUsers = gets.getAllUsers;
+var getUser = gets.getUser;
 var postUser = posts.postNewUser;
 
 app.use(bodyParser.json());
@@ -25,5 +26,6 @@ app.listen(app.get('port'), function() {
 
 
 router.route('/users').get(getUsers).post(postUser);
+router.route('/users/:idUser').get(getUser);
 
 app.use(express.static(__dirname + '/public'), router);

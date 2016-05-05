@@ -52,7 +52,32 @@ module.exports = function() {
         });
     }
 
+    function getUser(request, response) {
+        //var query = "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users_json;";
+        var idUser = request.params.idUser;
+        query = querys.getUser(idUser);
+
+        console.log(query);
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query(query, function(err, result) {
+                done();
+                if (err) {
+                    console.error(err);
+                    response.send("Error " + err);
+                } else {
+                    //response.send(result.rows) ;
+                    console.log(result);
+                    console.log('users');
+                    var user = result.rows[0];
+                    console.log(user);
+                    return addMetadata(response, formatUsers(user));
+                }
+            });
+        });
+    }
+
     return {
-        getAllUsers: getAllUsers
+        getAllUsers: getAllUsers,
+        getUser : getUser
     }
 }();
