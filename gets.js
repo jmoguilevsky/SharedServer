@@ -1,7 +1,7 @@
 module.exports = function() {
     var pg = require('pg');
     var version = 0.1;
-    var querys = require('./querys.js');
+    var querys = require('./querysGets.js');
 
     function addMetadata(response, items) {
         console.log(items);
