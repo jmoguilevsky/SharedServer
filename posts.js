@@ -1,7 +1,8 @@
 module.exports = function() {
     var pg = require('pg');
     var version = 0.1;
-    var querys = require('./querysPosts.js');
+    var querysPost = require('./querysPosts.js');
+    var querysGets = require('./querysGets.js');
 
     function postNewUser(request, response) {
 
@@ -10,7 +11,7 @@ module.exports = function() {
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
-        var query = querys.insertUserWithInterests(user);
+        var query = querysPost.insertUserWithInterests(user);
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
         var idUser = 0;
@@ -25,11 +26,21 @@ module.exports = function() {
                     response.status(400).send(body);
                 } else {
                     console.log('Se guardo ok');
-                    user.id = idUser;
-                    body = {};
-                    body.user = user;
-                    body.metadata = request.body.metadata;
-                    response.status(201).send(body);
+                    client.query(query, function(err, result) {
+                    	if (err) {
+		                    body = {
+		                        error: 'error al obtener el id del usuario guardado',
+		                        metadata: request.body.metadata
+		                    };
+	                    	response.status(400).send(body);
+                		}else{
+	                    	user.id = result.rows[0]['id'];
+		                    body = {};
+		                    body.user = user;
+		                    body.metadata = request.body.metadata;
+		                    response.status(201).send(body);
+	                    }
+                    });
                 }
             });
         });

@@ -14,6 +14,6 @@ module.exports = function() {
     return {
         getAllUsers: getAllUsers,
         getInterest: selectInterest,
-        getUser: getUserId
+        getUserId: getUserId
     }
 }();
