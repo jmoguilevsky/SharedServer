@@ -29,7 +29,7 @@ module.exports = function() {
 
     function formatUser(user) {
         return {
-            user: item
+            user: user
         }
     }
 
