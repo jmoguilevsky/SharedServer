@@ -11,8 +11,8 @@ module.exports = function() {
 
         return 'DO $$' +
             'DECLARE ' + newUserVariable + ' int;' +
-            'begin' +
-            queryInsertUser(user) + ' returning id into ' + newUserVariable + ';' +
+            'BEGIN ' +
+            queryInsertUser(user) + ' RETURNING id into ' + newUserVariable + ';' +
             interests +
             'END $$;';
     }
@@ -23,9 +23,9 @@ module.exports = function() {
 
     function queryInsertInterestForUser(interest, idNewUser) {
 		return 'DECLARE idInterest int;'+
-		'BEGIN'+
+		'BEGIN '+
 		'select id from Interest where value =\'' + interest.value + '\' and category = \'' + interest.category + '\' into idInterest;'+
-		'IF idInterest is NULL THEN'+
+		'IF idInterest is NULL THEN '+
 			'insert into Interest(category, value) values(\'' + interest.category + '\',\'' + interest.value + '\') returning id into idInterest;' +
 		'END IF;'+
 		'insert into UserInterest (idUser,idInterest) values (' + idNewUser + ', idInterest);' +
@@ -90,7 +90,7 @@ module.exports = function() {
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
-        var query = queryInsertInterestForUser(user);
+        var query = queryInsertUserWithInterests(user);
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
         var idUser = 0;
