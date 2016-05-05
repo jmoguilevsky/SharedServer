@@ -27,19 +27,19 @@ module.exports = function() {
                 } else {
                     console.log('Se guardo ok');
                     client.query(querysGets.getUserId(user), function(err, result) {
-                    	if (err) {
-		                    body = {
-		                        error: 'error al obtener el id del usuario guardado',
-		                        metadata: request.body.metadata
-		                    };
-	                    	response.status(400).send(body);
-                		}else{
-	                    	user.id = result.rows[0]['id'];
-		                    body = {};
-		                    body.user = user;
-		                    body.metadata = request.body.metadata;
-		                    response.status(201).send(body);
-	                    }
+                        if (err) {
+                            body = {
+                                error: 'error al obtener el id del usuario guardado',
+                                metadata: request.body.metadata
+                            };
+                            response.status(400).send(body);
+                        } else {
+                            user.id = result.rows[0]['id'];
+                            body = {};
+                            body.user = user;
+                            body.metadata = request.body.metadata;
+                            response.status(201).send(body);
+                        }
                     });
                 }
             });

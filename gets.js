@@ -3,7 +3,17 @@ module.exports = function() {
     var version = 0.1;
     var querys = require('./querysGets.js');
 
-    function addMetadata(response, items) {
+    function addMetadataUser(response, item) {
+        var json = {};
+        json.user = item;
+        json.metadata = {
+            "version": version,
+        }
+        console.log(json);
+        response.send(json);
+    }
+
+    function addMetadataUsers(response, items) {
         console.log(items);
         var count = items.length;
         console.log(count);
@@ -17,12 +27,18 @@ module.exports = function() {
         response.send(json);
     }
 
+    function formatUser(user) {
+        return {
+            user: item
+        }
+    }
+
     function formatUsers(items) {
         var users = [];
         items.forEach(function(item) {
-            users.push({
-                user: item
-            });
+            users.push(
+                formatUser(item)
+            );
         });
         //console.log('users');
         //console.log(users);
@@ -46,7 +62,7 @@ module.exports = function() {
                     console.log('users');
                     var users = result.rows[0]['users'];
                     console.log(users);
-                    return addMetadata(response, formatUsers(users));
+                    return addMetadataUsers(response, formatUsers(users));
                 }
             });
         });
@@ -67,10 +83,10 @@ module.exports = function() {
                 } else {
                     //response.send(result.rows) ;
                     console.log(result);
-                    console.log('users');
+                    console.log('user');
                     var user = result.rows[0];
                     console.log(user);
-                    return addMetadata(response, formatUsers(user));
+                    return addMetadataUser(response, formatUser(user));
                 }
             });
         });
@@ -78,6 +94,6 @@ module.exports = function() {
 
     return {
         getAllUsers: getAllUsers,
-        getUser : getUser
+        getUser: getUser
     }
 }();
