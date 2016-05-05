@@ -4,8 +4,7 @@ module.exports = function() {
     var querys = require('./querysGets.js');
 
     function addMetadataUser(response, item) {
-        var json = {};
-        json.user = item;
+        var json = item;
         json.metadata = {
             "version": version,
         }
