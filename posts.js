@@ -26,7 +26,7 @@ module.exports = function() {
                     response.status(400).send(body);
                 } else {
                     console.log('Se guardo ok');
-                    client.query(query, function(err, result) {
+                    client.query(querysGets.getUserId(user), function(err, result) {
                     	if (err) {
 		                    body = {
 		                        error: 'error al obtener el id del usuario guardado',
