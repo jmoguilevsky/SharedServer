@@ -1,5 +1,6 @@
 module.exports = function() {
 	var querysInserts = require('./querysPosts');
+	var pg = request('pg');
 
     updateUser = function(request,response) {
         //var queryUpdateUser = queryUpdateUser(user);
