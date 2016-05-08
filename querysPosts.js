@@ -7,7 +7,7 @@ module.exports = function() {
             interests += queryInsertInterestForUser(interest, newUserVariable);
         })
 
-        return 'DO $$' +
+        return 'DO $$ ' +
             'DECLARE ' + newUserVariable + ' int;' +
             'BEGIN ' +
             queryInsertUser(user) + ' RETURNING id into ' + newUserVariable + ';' +
