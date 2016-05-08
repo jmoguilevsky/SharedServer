@@ -1,8 +1,8 @@
 module.exports = function() {
-	var querysInserts = require('./querysPosts');
-	var pg = require('pg');
+    var querysInserts = require('./querysPosts');
+    var pg = require('pg');
 
-    updateUser = function(request,response) {
+    updateUser = function(request, response) {
         //var queryUpdateUser = queryUpdateUser(user);
         /*var interests = '';
         user.interests.forEach(function(interest) {
@@ -11,16 +11,14 @@ module.exports = function() {
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
-        var query = 'DO $$ '+
-        			'DECLARE cant int;'+
-        			'insert into Interest (category, value) values (\'algo\',\'valor\');'+
-    				'BEGIN '+
-    				'select id from UserProfile where id = 12313;'+
-    				'IF cant IS NULL THEN '+
-    				'RAISE NOTICE \'es null\';'+
-    				'END IF; '+
-    				'END; '+
-					'END $$;';
+        var query = 'DO $$ ' +
+            'DECLARE cant int;' +
+            'BEGIN ' +
+            'select id into cant from UserProfile where id = ' + user.id + ' and email = \'' + user.email + '\';' +
+            'IF cant IS NULL THEN ' +
+            'RAISE EXCEPTION \'es null\';' +
+            'END IF; ' +
+            'END $$;';
 
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
@@ -57,11 +55,11 @@ module.exports = function() {
     }
 
     function queryUpdateLocationUser(location, idUser) {
-    	return 'update Location set latitude = \'' + user.name + '\',longitude = \'' + user.alias + '\' where idUser = ' + user.id + ';';
+        return 'update Location set latitude = \'' + user.name + '\',longitude = \'' + user.alias + '\' where idUser = ' + user.id + ';';
     }
 
     function queryUpdateInterestUser(interest, idUser) {
-    	
+
     }
 
     function queryUpdateUser(user) {
