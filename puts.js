@@ -3,30 +3,30 @@ module.exports = function() {
     var pg = require('pg');
 
     function queryUpdateUserProfile(user) {
-    	return 'update UserProfile set (name, alias) = (\''+user.name+'\',\''+user.alias+'\') where id = '+user.id+' and email =\''+user.email+'\';'
+        return 'update UserProfile set (name, alias) = (\'' + user.name + '\',\'' + user.alias + '\') where id = ' + user.id + ' and email =\'' + user.email + '\';'
     }
 
     function queryUpdateLocation(user) {
-    	return 'update Location set (latitude, longitude) =  ('+user.latitude+','+user.longitude+') where idUser = '+user.id+';';
+        return 'update Location set (latitude, longitude) =  (' + user.latitude + ',' + user.longitude + ') where idUser = ' + user.id + ';';
     }
 
     function queryUpdateUser(user) {
-    	var interest = '';
-    	user.interests.forEach(function(interest) {
+        var interest = '';
+        user.interests.forEach(function(interest) {
             interests += querysInserts.insertInterestForUser(interest, newUserVariable);
         });
 
-    	return 'DO $$ ' +
+        return 'DO $$ ' +
             'DECLARE cant int;' +
             'BEGIN ' +
             'select id into cant from UserProfile where id = ' + user.id + ' and email = \'' + user.email + '\';' +
             'IF cant IS NULL THEN ' +
-            	'RAISE EXCEPTION \'user doesnt exist\';' +
+            'RAISE EXCEPTION \'user doesnt exist\';' +
             'END IF; ' +
             quertUpdateUserProfile(user) +
-            queryUpdateLocation(user) + 
-            'delete from UserInterest where idUser = '+user.id + ';' +
-            interests+
+            queryUpdateLocation(user) +
+            'delete from UserInterest where idUser = ' + user.id + ';' +
+            interests +
             'END $$;';
     }
 
@@ -54,21 +54,10 @@ module.exports = function() {
                     response.status(400).send(body);
                 } else {
                     console.log('Se guardo ok');
-                    client.query(querysGets.getUserId(user), function(err, result) {
-                        if (err) {
-                            body = {
-                                error: 'error al obtener el id del usuario guardado',
-                                metadata: request.body.metadata
-                            };
-                            response.status(400).send(body);
-                        } else {
-                            user.id = result.rows[0]['id'];
-                            body = {};
-                            body.user = user;
-                            body.metadata = request.body.metadata;
-                            response.status(201).send(body);
-                        }
-                    });
+                    body = {};
+                    body.user = user;
+                    body.metadata = request.body.metadata;
+                    response.status(201).send(body);
                 }
             });
         });
