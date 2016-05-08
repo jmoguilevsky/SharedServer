@@ -15,7 +15,7 @@ module.exports = function() {
         			'DECLARE cant int;'+
     				'BEGIN '+
     				'select id from UserProfile where id = 12313;'+
-    				'IF cant IS NULL'+
+    				'IF cant IS NULL THEN '+
     				'RAISE NOTICE \'es null\';'+
     				'END IF;'+
     				'END;'+
