@@ -1,7 +1,7 @@
 module.exports = function() {
 
     function getAllUsers() {
-        return "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest, UserInterest where UserInterest.idInterest = Interest.id and UserInterest.idUser = UserProfile.id) interests ) AS Interests from UserProfile) as users_json;";
+        return "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from  (select id as userId, name, alias, email, 'http://enigmatic-depths-58073.herokuapp.com/users/' || id || '/photo 'as photo_profile,  (SELECT row_to_json(l) from  (select latitude, longitude from Location where Location.idUser = UserProfile.id) l ) AS location, (SELECT array_to_json(array_agg(row_to_json(interests))) from  (select category, value from Interest, UserInterest where UserInterest.idInterest = Interest.id and UserInterest.idUser = UserProfile.id) interests ) AS Interests from UserProfile) as users_json;";
     }
 
     function getUser(idUser) {
