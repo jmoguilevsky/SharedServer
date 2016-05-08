@@ -2,11 +2,11 @@ module.exports = function() {
 	var querysInserts = require('./querysPosts');
 
     updateUser = function(user) {
-        var queryUpdateUser = queryUpdateUser(user);
-        var interests = '';
+        //var queryUpdateUser = queryUpdateUser(user);
+        /*var interests = '';
         user.interests.forEach(function(interest) {
             interests += queryUpdateInterestUser(interest, user.id);
-        });
+        });*/
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
