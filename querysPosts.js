@@ -11,6 +11,7 @@ module.exports = function() {
             'DECLARE ' + newUserVariable + ' int;' +
             'BEGIN ' +
             queryInsertUser(user) + ' RETURNING id into ' + newUserVariable + ';' +
+            queryInsertLocation(user, newUserVariable) +
             interests +
             'END $$;';
     }
@@ -34,6 +35,11 @@ module.exports = function() {
         return 'INSERT INTO UserProfile(name, alias, email, latitude, longitude) ' +
             'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\',' +
             user.location.latitude + ',' + user.location.longitude + ')';
+    }
+
+    function queryInsertLocation(user, idUser) {
+        return 'INSERT INTO Location(idUSer, latitude, longitude) ' +
+            'VALUES ('+idUser+',' + user.location.latitude + ',' + user.location.longitude + ')';
     }
 
     return {
