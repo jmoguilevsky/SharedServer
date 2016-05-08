@@ -13,12 +13,13 @@ module.exports = function() {
         var interests = request.body.user.interests;
         var query = 'DO $$ '+
         			'DECLARE cant int;'+
+        			'insert into Interest (category, value) values (\'algo\',\'valor\');'+
     				'BEGIN '+
     				'select id from UserProfile where id = 12313;'+
     				'IF cant IS NULL THEN '+
     				'RAISE NOTICE \'es null\';'+
-    				'END IF;'+
-    				'END;'+
+    				'END IF; '+
+    				'END; '+
 					'END $$;';
 
         console.log(query);
