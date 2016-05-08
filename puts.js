@@ -1,7 +1,7 @@
 module.exports = function() {
 	var querysInserts = require('./querysPosts');
 
-    updateUser = function(user) {
+    updateUser = function(request,response) {
         //var queryUpdateUser = queryUpdateUser(user);
         /*var interests = '';
         user.interests.forEach(function(interest) {
