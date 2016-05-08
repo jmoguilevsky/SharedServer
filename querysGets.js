@@ -5,7 +5,7 @@ module.exports = function() {
     }
 
     function getUser(idUser) {
-        return 'select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest, UserInterest where UserInterest.idInterest = Interest.id and UserInterest.idUser = UserProfile.id) interests ) AS Interests from UserProfile ' +
+        return 'select *, (select encodedString from Photo where  Photo.idUser = UserProfile.id) as photo_profile, (SELECT row_to_json(l) from  (select latitude, longitude from Location where Location.idUser = UserProfile.id) l ) AS location, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest, UserInterest where UserInterest.idInterest = Interest.id and UserInterest.idUser = UserProfile.id) interests ) AS Interests from UserProfile ' +
             'where id =' + idUser + ';';
     }
 
