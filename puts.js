@@ -1,6 +1,34 @@
 module.exports = function() {
-    var querysInserts = require('./querysPosts');
+    var querysInserts = require('./querysInserts');
     var pg = require('pg');
+
+    function queryUpdateUserProfile(user) {
+    	return 'update UserProfile set (name, alias) = (\''+user.name+'\',\''+user.alias+'\') where id = '+user.id+' and email =\''+user.email+'\';'
+    }
+
+    function queryUpdateLocation(user) {
+    	return 'update Location set (latitude, longitude) =  ('+user.latitude+','+user.longitude+') where idUser = '+user.id+';';
+    }
+
+    function queryUpdateUser(user) {
+    	var interest = '';
+    	user.interests.forEach(function(interest) {
+            interests += querysInserts.insertInterestForUser(interest, newUserVariable);
+        });
+
+    	return 'DO $$ ' +
+            'DECLARE cant int;' +
+            'BEGIN ' +
+            'select id into cant from UserProfile where id = ' + user.id + ' and email = \'' + user.email + '\';' +
+            'IF cant IS NULL THEN ' +
+            	'RAISE EXCEPTION \'user doesnt exist\';' +
+            'END IF; ' +
+            quertUpdateUserProfile(user) +
+            queryUpdateLocation(user) + 
+            'delete from UserInterest where idUser = '+user.id + ';' +
+            interests+
+            'END $$;';
+    }
 
     updateUser = function(request, response) {
         //var queryUpdateUser = queryUpdateUser(user);
@@ -11,14 +39,7 @@ module.exports = function() {
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
-        var query = 'DO $$ ' +
-            'DECLARE cant int;' +
-            'BEGIN ' +
-            'select id into cant from UserProfile where id = ' + user.id + ' and email = \'' + user.email + '\';' +
-            'IF cant IS NULL THEN ' +
-            'RAISE EXCEPTION \'es null\';' +
-            'END IF; ' +
-            'END $$;';
+        var query = 
 
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';

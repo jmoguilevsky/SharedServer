@@ -5,7 +5,7 @@ module.exports = function() {
         var interests = '';
         user.interests.forEach(function(interest) {
             interests += queryInsertInterestForUser(interest, newUserVariable);
-        })
+        });
 
         return 'DO $$ ' +
             'DECLARE ' + newUserVariable + ' int;' +
@@ -44,6 +44,6 @@ module.exports = function() {
     return {
         insertUserWithInterests: queryInsertUserWithInterests,
         insertUserInterest: queryInsertUserInterest,
-        queryInsertInterestForUser: queryInsertInterestForUser
+        insertInterestForUser: queryInsertInterestForUser
     }
 }();
