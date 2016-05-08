@@ -3,12 +3,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var gets = require('./gets');
 var posts = require('./posts');
+var puts = require('./puts');
 var app = express();
 var router = express.Router();
 
 var getUsers = gets.getAllUsers;
 var getUser = gets.getUser;
 var postUser = posts.postNewUser;
+var putUpdateUser = puts.putUser;
 
 app.use(bodyParser.json());
 
@@ -26,6 +28,6 @@ app.listen(app.get('port'), function() {
 
 
 router.route('/users').get(getUsers).post(postUser);
-router.route('/users/:idUser').get(getUser);
+router.route('/users/:idUser').get(getUser).put(putUpdateUser);
 
 app.use(express.static(__dirname + '/public'), router);

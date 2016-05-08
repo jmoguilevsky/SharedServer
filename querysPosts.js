@@ -38,11 +38,12 @@ module.exports = function() {
 
     function queryInsertLocation(user, idUser) {
         return 'INSERT INTO Location(idUser, latitude, longitude) ' +
-            'VALUES ('+idUser+',' + user.location.latitude + ',' + user.location.longitude + ');';
+            'VALUES (' + idUser + ',' + user.location.latitude + ',' + user.location.longitude + ');';
     }
 
     return {
         insertUserWithInterests: queryInsertUserWithInterests,
-        insertUserInterest: queryInsertUserInterest
+        insertUserInterest: queryInsertUserInterest,
+        queryInsertInterestForUser: queryInsertInterestForUser
     }
 }();
