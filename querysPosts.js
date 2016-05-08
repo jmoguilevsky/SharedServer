@@ -39,7 +39,7 @@ module.exports = function() {
 
     function queryInsertLocation(user, idUser) {
         return 'INSERT INTO Location(idUSer, latitude, longitude) ' +
-            'VALUES ('+idUser+',' + user.location.latitude + ',' + user.location.longitude + ')';
+            'VALUES ('+idUser+',' + user.location.latitude + ',' + user.location.longitude + ');';
     }
 
     return {
