@@ -38,8 +38,7 @@ module.exports = function() {
         });*/
         var user = request.body.user;
         console.log('user\n' + user);
-        var interests = request.body.user.interests;
-        var query = 
+        var query = queryUpdateUser(user);
 
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
