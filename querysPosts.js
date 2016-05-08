@@ -32,13 +32,12 @@ module.exports = function() {
     }
 
     function queryInsertUser(user) {
-        return 'INSERT INTO UserProfile(name, alias, email, latitude, longitude) ' +
-            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\',' +
-            user.location.latitude + ',' + user.location.longitude + ')';
+        return 'INSERT INTO UserProfile(name, alias, email) ' +
+            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\')';
     }
 
     function queryInsertLocation(user, idUser) {
-        return 'INSERT INTO Location(idUSer, latitude, longitude) ' +
+        return 'INSERT INTO Location(idUser, latitude, longitude) ' +
             'VALUES ('+idUser+',' + user.location.latitude + ',' + user.location.longitude + ');';
     }
 
