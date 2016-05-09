@@ -11,7 +11,7 @@ module.exports = function() {
     }
 
     function queryUpdateUser(user) {
-        var interest = '';
+        var interests = '';
         user.interests.forEach(function(interest) {
             interests += querysInserts.insertInterestForUser(interest, newUserVariable);
         });
