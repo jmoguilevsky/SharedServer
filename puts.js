@@ -7,7 +7,7 @@ module.exports = function() {
     }
 
     function queryUpdateLocation(user) {
-        return 'update Location set (latitude, longitude) =  (' + user.latitude + ',' + user.longitude + ') where idUser = ' + user.id + ';';
+        return 'update Location set (latitude, longitude) =  (' + user.location.latitude + ',' + user.location.longitude + ') where idUser = ' + user.id + ';';
     }
 
     function queryUpdateUser(user) {
