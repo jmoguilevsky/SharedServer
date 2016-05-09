@@ -13,7 +13,7 @@ module.exports = function() {
     function queryUpdateUser(user) {
         var interests = '';
         user.interests.forEach(function(interest) {
-            interests += querysInserts.insertInterestForUser(interest, newUserVariable);
+            interests += querysInserts.insertInterestForUser(interest, user.id);
         });
 
         return 'DO $$ ' +
