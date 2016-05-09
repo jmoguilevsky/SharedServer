@@ -71,10 +71,6 @@ module.exports = function() {
 
     }
 
-    function queryUpdateUser(user) {
-        return 'update UserProfile set name = \'' + user.name + '\',alias = \'' + user.alias + '\' where id = ' + user.id + ' and email=\'' + user.email + '\';';
-    }
-
     return {
         putUser: updateUser
     }
