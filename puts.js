@@ -1,6 +1,6 @@
 module.exports = function() {
     var pg = require('pg');
-    var querysUpdate =require('./querysUpdate.js');
+    var querysUpdate =require('./querysUpdates.js');
 
     updateUser = function(request, response) {
         var user = request.body.user;
