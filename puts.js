@@ -23,7 +23,7 @@ module.exports = function() {
             'IF cant IS NULL THEN ' +
             'RAISE EXCEPTION \'user doesnt exist\';' +
             'END IF; ' +
-            quertUpdateUserProfile(user) +
+            queryUpdateUserProfile(user) +
             queryUpdateLocation(user) +
             'delete from UserInterest where idUser = ' + user.id + ';' +
             interests +
