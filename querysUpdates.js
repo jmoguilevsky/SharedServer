@@ -29,4 +29,8 @@ module.exports = function () {
             interests +
             'END $$;';
     }
+
+    return{
+        queryUpdateUser : queryUpdateUser
+    }
 }();
