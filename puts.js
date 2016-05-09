@@ -1,17 +1,11 @@
 module.exports = function() {
     var pg = require('pg');
-    var querysUpdate =require('./querysUpdate');
+    var querysUpdate =require('./querysUpdate.js');
 
     updateUser = function(request, response) {
-        //var queryUpdateUser = queryUpdateUser(user);
-        /*var interests = '';
-        user.interests.forEach(function(interest) {
-            interests += queryUpdateInterestUser(interest, user.id);
-        });*/
         var user = request.body.user;
         console.log('user\n' + user);
         var query = querysUpdate.queryUpdateUser(user);
-
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
         var idUser = 0;
