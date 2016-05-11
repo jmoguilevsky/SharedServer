@@ -26,6 +26,20 @@ module.exports = function() {
         response.send(json);
     }
 
+    function addMetadataInterests(response, items) {
+        console.log(items);
+        var count = items.length;
+        console.log(count);
+        var json = {};
+        json.interests = items;
+        json.metadata = {
+            "version": version,
+            "count": count
+        }
+        console.log(json);
+        response.send(json);
+    }    
+
     function formatUser(user) {
         return {
             user: user
@@ -46,9 +60,11 @@ module.exports = function() {
     }
 
     function getAllUsers(request, response) {
-        //var query = "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users_json;";
         query = querys.getAllUsers();
         console.log(query);
+
+        return getAllItemsInTable(request, response, query, 'users', 'users', addMetadataUsers, formatUsers);
+        /*
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query(query, function(err, result) {
                 done();
@@ -65,10 +81,10 @@ module.exports = function() {
                 }
             });
         });
+        */
     }
 
     function getUser(request, response) {
-        //var query = "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users_json;";
         var idUser = request.params.idUser;
         query = querys.getUser(idUser);
 
@@ -90,6 +106,46 @@ module.exports = function() {
             });
         });
     }
+
+    function getAllInterests(request, response) {
+        query = querys.getAllInterests();
+        console.log(query);
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query(query, function(err, result) {
+                done();
+                if (err) {
+                    console.error(err);
+                    response.send("Error " + err);
+                } else {
+                    //response.send(result.rows) ;
+                    console.log(result);
+                    console.log('users');
+                    var users = result.rows[0]['users'];
+                    console.log(users);
+                    return addMetadataUsers(response, formatUsers(users));
+                }
+            });
+        });
+    }
+
+    function getAllItemsInTable(request, response, query, logMessage, resultProperty, addMetadataFunction, formatData) {
+        //var query = "SELECT array_to_json(array_agg(row_to_json(users_json))) as users from (select *, (SELECT array_to_json(array_agg(row_to_json(interests))) from (select category, value from Interest where idUser = id) interests ) AS Interests from \"USER\") as users_json;";
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query(query, function(err, result) {
+                done();
+                if (err) {
+                    console.error(err);
+                    response.send("Error " + err);
+                } else {
+                    //response.send(result.rows) ;
+                    console.log(logMessage+'\n'+result);
+                    var items = result.rows[0][resultProperty];
+                    console.log(items);
+                    return addMetadataFunction(response, formatData(items));
+                }
+            });
+        });
+    }    
 
     return {
         getAllUsers: getAllUsers,

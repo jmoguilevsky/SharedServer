@@ -17,10 +17,15 @@ module.exports = function() {
         return 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
     }
 
+    function getAllInterests() {
+        return 'select array_to_json(array_agg(row_to_json(interest_json))) as Interests from (select category, value from Interest) interest_json;';
+    }
+
     return {
         getAllUsers: getAllUsers,
         getInterest: selectInterest,
         getUserId: getUserId,
-        getUser: getUser
+        getUser: getUser,
+        getAllInterests: getAllInterests
     }
 }();
