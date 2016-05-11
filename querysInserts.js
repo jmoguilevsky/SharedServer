@@ -16,12 +16,16 @@ module.exports = function() {
             'END $$;';
     }
 
+    function queryInsertInterest(interest, lastChar = '') {
+        return 'insert into Interest(category, value) values(\'' + interest.category + '\',\'' + interest.value + '\')'+lastChar;
+    }
+
     function queryInsertInterestForUser(interest, idNewUser) {
         return 'DECLARE idInterest int;' +
             'BEGIN ' +
             'select id from Interest where value =\'' + interest.value + '\' and category = \'' + interest.category + '\' into idInterest;' +
             'IF idInterest is NULL THEN ' +
-            'insert into Interest(category, value) values(\'' + interest.category + '\',\'' + interest.value + '\') returning id into idInterest;' +
+            queryInsertInterest(interest) + 'returning id into idInterest;' +
             'END IF;' +
             queryInsertUserInterest(idNewUser, 'idInterest') +
             'END;';
@@ -44,6 +48,7 @@ module.exports = function() {
     return {
         insertUserWithInterests: queryInsertUserWithInterests,
         insertUserInterest: queryInsertUserInterest,
-        insertInterestForUser: queryInsertInterestForUser
+        insertInterestForUser: queryInsertInterestForUser,
+        insertInterest : queryInsertInterest
     }
 }();

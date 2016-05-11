@@ -46,7 +46,37 @@ module.exports = function() {
         });
     }
 
+    function postNewInterest(request, response) {
+
+        var body = 'Error';
+        //console.log(request.body);
+        var interest = request.body.interest;
+        console.log('interest\n' + interest);
+        var query = postQuerys.insertInterest(interest, ';');
+        console.log(query);
+        //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query(query, function(err) {
+                if (err) {
+                    body = {
+                        error: 'No se pudo guardar el interes',
+                        metadata: request.body.metadata
+                    };
+                    response.status(400).send(body);
+                } else {
+                    console.log('Se guardo ok');
+                    user.id = result.rows[0]['id'];
+                    body = {};
+                    body.user = user;
+                    body.metadata = request.body.metadata;
+                    response.status(201).send(body);
+                }
+            });
+        });
+    }
+
     return {
-        postNewUser: postNewUser
+        postNewUser: postNewUser,
+        postNewInterest: postNewInterest
     }
 }();
