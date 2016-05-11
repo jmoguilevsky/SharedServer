@@ -29,7 +29,7 @@ module.exports = function() {
     }
 
     updatePhoto = function(request, response) {
-        var idUser = request.params.id;
+        var idUser = request.params.idUser;
         console.log('idUser\n' + idUser);
         var query = querysUpdate.queryUpdatePhoto(idUser, request.body.photo);
         console.log(query);
