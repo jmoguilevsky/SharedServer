@@ -1,8 +1,8 @@
 module.exports = function() {
     var pg = require('pg');
     var version = 0.1;
-    var querysPost = require('./querysInserts.js');
-    var querysGets = require('./querysGets.js');
+    var postQuerys = require('./querysInserts.js');
+    var getQuerys = require('./querysGets.js');
 
     function postNewUser(request, response) {
 
@@ -11,7 +11,7 @@ module.exports = function() {
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;
-        var query = querysPost.insertUserWithInterests(user);
+        var query = postQuerys.insertUserWithInterests(user);
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
         var idUser = 0;
@@ -26,7 +26,7 @@ module.exports = function() {
                     response.status(400).send(body);
                 } else {
                     console.log('Se guardo ok');
-                    client.query(querysGets.getUserId(user), function(err, result) {
+                    client.query(getQuerys.getUserId(user), function(err, result) {
                         if (err) {
                             body = {
                                 error: 'error al obtener el id del usuario guardado',

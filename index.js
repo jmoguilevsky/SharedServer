@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var gets = require('./gets');
 var posts = require('./posts');
 var puts = require('./puts');
+var deletes = require('./deletes');
 var app = express();
 var router = express.Router();
 
@@ -12,6 +13,7 @@ var getUser = gets.getUser;
 var postUser = posts.postNewUser;
 var putUpdateUser = puts.putUser;
 var putUpdatePhoto = puts.putPhoto;
+var deleteUser = deletes.deleteUser;
 
 app.use(bodyParser.json());
 
@@ -28,7 +30,7 @@ app.listen(app.get('port'), function() {
 });
 
 
-router.route('/users').get(getUsers).post(postUser);
+router.route('/users').get(getUsers).post(postUser).delete(deleteUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser);
 router.route('/users/:idUser/photo').put(putUpdatePhoto);
 
