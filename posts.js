@@ -65,7 +65,6 @@ module.exports = function() {
                     response.status(400).send(body);
                 } else {
                     console.log('Se guardo ok');
-                    user.id = result.rows[0]['id'];
                     body = {};
                     body.user = user;
                     body.metadata = request.body.metadata;
