@@ -46,6 +46,10 @@ module.exports = function() {
         }
     }
 
+    function formatInterests(interests) {
+        return interests;
+    }
+
     function formatUsers(items) {
         var users = [];
         items.forEach(function(item) {
@@ -53,35 +57,13 @@ module.exports = function() {
                 formatUser(item)
             );
         });
-        //console.log('users');
-        //console.log(users);
-        //return users;
         return users;
     }
 
     function getAllUsers(request, response) {
         query = querys.getAllUsers();
         console.log(query);
-
         return getAllItemsInTable(request, response, query, 'users', 'users', addMetadataUsers, formatUsers);
-        /*
-        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-            client.query(query, function(err, result) {
-                done();
-                if (err) {
-                    console.error(err);
-                    response.send("Error " + err);
-                } else {
-                    //response.send(result.rows) ;
-                    console.log(result);
-                    console.log('users');
-                    var users = result.rows[0]['users'];
-                    console.log(users);
-                    return addMetadataUsers(response, formatUsers(users));
-                }
-            });
-        });
-        */
     }
 
     function getUser(request, response) {
@@ -110,22 +92,7 @@ module.exports = function() {
     function getAllInterests(request, response) {
         query = querys.getAllInterests();
         console.log(query);
-        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-            client.query(query, function(err, result) {
-                done();
-                if (err) {
-                    console.error(err);
-                    response.send("Error " + err);
-                } else {
-                    //response.send(result.rows) ;
-                    console.log(result);
-                    console.log('users');
-                    var users = result.rows[0]['users'];
-                    console.log(users);
-                    return addMetadataUsers(response, formatUsers(users));
-                }
-            });
-        });
+        return getAllItemsInTable(request, response, query, 'interests', 'interests', addMetadataInterests, formatInterests);
     }
 
     function getAllItemsInTable(request, response, query, logMessage, resultProperty, addMetadataFunction, formatData) {
@@ -149,6 +116,7 @@ module.exports = function() {
 
     return {
         getAllUsers: getAllUsers,
-        getUser: getUser
+        getUser: getUser,
+        getAllInterests : getAllInterests
     }
 }();

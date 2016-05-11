@@ -9,8 +9,10 @@ var app = express();
 var router = express.Router();
 
 var getUsers = gets.getAllUsers;
+var getInterests = gets.getAllInterests;
 var getUser = gets.getUser;
 var postUser = posts.postNewUser;
+var postInterest = posts.postNewInterest;
 var putUpdateUser = puts.putUser;
 var putUpdatePhoto = puts.putPhoto;
 var deleteUser = deletes.deleteUser;
@@ -33,5 +35,6 @@ app.listen(app.get('port'), function() {
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
 router.route('/users/:idUser/photo').put(putUpdatePhoto);
+router.route('/interests').get(getInterests).post(postInterest);
 
 app.use(express.static(__dirname + '/public'), router);
