@@ -46,8 +46,7 @@ module.exports = function() {
                 } else {
                     console.log('Se updateo');
                     body = {};
-                    body.user = user;
-                    body.metadata = request.body.metadata;
+                    body.photo = request.body.photo;
                     response.status(201).send(body);
                 }
             });
