@@ -66,7 +66,7 @@ module.exports = function() {
                 } else {
                     console.log('Se guardo ok');
                     body = {};
-                    body.user = user;
+                    body.interest = interest;
                     body.metadata = request.body.metadata;
                     response.status(201).send(body);
                 }
