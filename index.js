@@ -11,6 +11,7 @@ var getUsers = gets.getAllUsers;
 var getUser = gets.getUser;
 var postUser = posts.postNewUser;
 var putUpdateUser = puts.putUser;
+var putUpdatePhoto = puts.putPhoto;
 
 app.use(bodyParser.json());
 
@@ -29,5 +30,6 @@ app.listen(app.get('port'), function() {
 
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser);
+router.route('/users/:idUser/photo').put(putUpdatePhoto);
 
 app.use(express.static(__dirname + '/public'), router);

@@ -10,6 +10,10 @@ module.exports = function () {
         return 'update Location set (latitude, longitude) =  (' + user.location.latitude + ',' + user.location.longitude + ') where idUser = ' + user.id + ';';
     }
 
+    function queryUpdatePhoto(idUser, encodedString) {
+        return 'update Photo set (encodedString) =  (\'' + encodedString + '\') where idUser = ' + idUser + ';';
+    }
+
     function queryUpdateUser(user) {
         var interests = '';
         user.interests.forEach(function(interest) {
@@ -25,12 +29,14 @@ module.exports = function () {
             'END IF; ' +
             queryUpdateUserProfile(user) +
             queryUpdateLocation(user) +
+            queryUpdatePhoto(user.id, user.photo_profile) +
             'delete from UserInterest where idUser = ' + user.id + ';' +
             interests +
             'END $$;';
     }
 
     return{
-        queryUpdateUser : queryUpdateUser
+        queryUpdateUser : queryUpdateUser,
+        queryUpdatePhoto : queryUpdatePhoto
     }
 }();
