@@ -16,8 +16,10 @@ module.exports = function() {
             'END $$;';
     }
 
-    function queryInsertInterest(interest, lastChar = '') {
-        return 'insert into Interest(category, value) values(\'' + interest.category + '\',\'' + interest.value + '\')'+lastChar;
+    function queryInsertInterest(interest, lastChar) {
+        var char = '';
+        if (lastChar !== undefined) char = lastChar;
+        return 'insert into Interest(category, value) values(\'' + interest.category + '\',\'' + interest.value + '\')'+char;
     }
 
     function queryInsertInterestForUser(interest, idNewUser) {
