@@ -30,8 +30,8 @@ app.listen(app.get('port'), function() {
 });
 
 
-router.route('/users').get(getUsers).post(postUser).delete(deleteUser);
-router.route('/users/:idUser').get(getUser).put(putUpdateUser);
+router.route('/users').get(getUsers).post(postUser);
+router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
 router.route('/users/:idUser/photo').put(putUpdatePhoto);
 
 app.use(express.static(__dirname + '/public'), router);
