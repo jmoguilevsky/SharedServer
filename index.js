@@ -40,4 +40,4 @@ router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser
 router.route('/users/:idUser/photo').put(putUpdatePhoto);
 router.route('/interests').get(getInterests).post(postInterest);
 
-app.use(express.static(__dirname + '/public'), router);
+app.use(express.static(__dirname + '/public'));
