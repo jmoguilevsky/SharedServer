@@ -25,12 +25,13 @@ app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
-
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
 
+router.route('/').get(function(request, response) {
+  response.render('pages/index');
+});
 
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
