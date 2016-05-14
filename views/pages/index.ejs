@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="userApp">
 
 <header>
 
   <% include ../partials/header.ejs %>
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css" />
+  <script src="controllers/usercontroller.js"></script>
 
 </header>
-<body>
-
+<body ng-controller="UserListController">
   <% include ../partials/nav.ejs %>
-  Hello {{ 'World' }}
+
+  <ul>
+    <li ng-repeat="user in users">
+      <span> {{user.name}} </span>
+      <p> {{user.alias}} </p>
+    </li>
+  </ul>
+
 </body>
 </html>

@@ -25,6 +25,7 @@ app.set('port', (process.env.PORT || 5000));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
+app.set('api', __dirname);
 app.set('view engine', 'ejs');
 
 app.listen(app.get('port'), function() {
