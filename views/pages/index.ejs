@@ -11,19 +11,11 @@
 <body ng-controller="UserListController">
   <% include ../partials/nav.ejs %>
 
-<!--
-  <ul>
-    <li ng-repeat="item in users">
-      <span> {{item.user.name}} </span>
-      <p> {{item.user.alias}} </p>
-    </li>
-  </ul>
--->
 <ul class="media-list">
   <li ng-repeat="item in users" class="media">
     <div class="media-left">
-      <a href="#">
-        <img class="media-object" src="..." alt="...">
+      <a href="{{item.user.profile_photo}}">
+      <img class="media-object" src="{{item.user.profile_photo}}" alt="Profile pic">
       </a>
     </div>
     <div class="media-body"> 
