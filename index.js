@@ -32,7 +32,7 @@ app.listen(app.get('port'), function() {
 });
 
 router.route('/').get(function(request, response) {
-  response.render('pages/index');
+  response.render('../pages/index');
 });
 
 router.route('/users').get(getUsers).post(postUser);
