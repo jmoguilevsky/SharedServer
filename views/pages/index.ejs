@@ -12,9 +12,9 @@
   <% include ../partials/nav.ejs %>
 
   <ul>
-    <li ng-repeat="user in users">
-      <span> {{user.name}} </span>
-      <p> {{user.alias}} </p>
+    <li ng-repeat="item in users">
+      <span> {{item.user.name}} </span>
+      <p> {{item.user.alias}} </p>
     </li>
   </ul>
 
