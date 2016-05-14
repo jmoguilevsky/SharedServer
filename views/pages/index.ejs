@@ -11,12 +11,18 @@
 <body ng-controller="UserListController">
   <% include ../partials/nav.ejs %>
 
+<!--
   <ul>
     <li ng-repeat="item in users">
       <span> {{item.user.name}} </span>
       <p> {{item.user.alias}} </p>
     </li>
   </ul>
+-->
+  <div class="list-group">
+    <a ng-repeat="item in users" href="#" class="list-group-item"> {{item.user.name}}, {{item.user.alias}} </a>
+  </div>
+
 
 </body>
 </html>
