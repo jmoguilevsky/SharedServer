@@ -19,13 +19,21 @@
     </li>
   </ul>
 -->
-<div class="list-group">
-  <a ng-repeat="item in users" href="#" class="list-group-item"> 
-    <h4 class="list-group-item-heading">{{item.user.name}} </h4>
-    <p class="list-group-item-text">{{item.user.alias}}</p>
-  </a>
-</div>
-
+<ul class="media-list">
+  <li ng-repeat="item in users" class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body"> 
+      <h4 class="media-heading">{{item.user.name}}</h4> 
+      <p>
+        {{item.user.alias}}
+      </p>
+    </div>
+  </li>
+</ul>
 
 </body>
 </html>
