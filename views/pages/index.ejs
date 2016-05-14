@@ -19,9 +19,12 @@
     </li>
   </ul>
 -->
-  <div class="list-group">
-    <a ng-repeat="item in users" href="#" class="list-group-item"> {{item.user.name}}, {{item.user.alias}} </a>
-  </div>
+<div class="list-group">
+  <a ng-repeat="item in users" href="#" class="list-group-item"> 
+    <h4 class="list-group-item-heading">{{item.user.name}} </h4>
+    <p class="list-group-item-text">{{item.user.alias}}</p>
+  </a>
+</div>
 
 
 </body>
