@@ -1,7 +1,6 @@
 var userApp = angular.module('userApp', []);
 
 userApp.controller('UserListController',function ($scope, $http) {
-	/*
 	$http.get('/api/users')
         .success(function(data) {
             $scope.users = data;
@@ -10,12 +9,12 @@ userApp.controller('UserListController',function ($scope, $http) {
         .error(function(data) {
             console.log('Error: ' + data);
         });
-	*/
-	$scope.users = [{
+
+	/*$scope.users = [{
 		"name":"joni",
 		"alias":"el mago wimo"
 	},{
 		"name":"manu",
 		"alias":"el doctor hibbert"
-	}];
+	}]*/
 });
