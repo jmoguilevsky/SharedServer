@@ -32,7 +32,7 @@ app.listen(app.get('port'), function() {
 });
 
 router.route('/').get(function(request, response) {
-  response.render('../pages/index');
+  response.render('pages/index');
 });
 
 router.route('/users').get(getUsers).post(postUser);
@@ -40,4 +40,4 @@ router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser
 router.route('/users/:idUser/photo').put(putUpdatePhoto);
 router.route('/interests').get(getInterests).post(postInterest);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'), router);
