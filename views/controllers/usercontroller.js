@@ -1,7 +1,7 @@
 var userApp = angular.module('userApp', []);
 
 userApp.controller('UserListController',function ($scope, $http) {
-	$http.get('/api/users')
+	$http.get('/users')
         .success(function(data) {
             $scope.users = data;
             console.log(data);
