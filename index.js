@@ -21,6 +21,7 @@ var putUpdatePhoto = puts.putPhoto;
 var deleteUser = deletes.deleteUser;
 
 app.use(bodyParser.json());
+app.use(express.bodyParser({limit: '5mb'}));
 
 app.set('port', (process.env.PORT || 5000));
 
