@@ -125,11 +125,14 @@ module.exports = function() {
                     console.error(err);
                     response.status(400).send("Error " + err);
                 } else {
-                    //response.send(result.rows) ;
                     console.log('result '+'\n'+JSON.stringify(result));
-                    console.log(result.rows[0]);
-                    var photo = result.rows[0]['encodedString'];
-                    response.status(200).send(photo);
+                    if (result.rows.rowCount === 0) {
+                        response.status(200).send('');
+                    }else{
+                        console.log(result.rows[0]);
+                        var photo = result.rows[0]['encodedString'];
+                        response.status(200).send(photo);
+                    }
                 }
             });
         });
