@@ -126,7 +126,7 @@ module.exports = function() {
                     response.status(400).send("Error " + err);
                 } else {
                     //response.send(result.rows) ;
-                    console.log('result '+'\n'+result);
+                    console.log('result '+'\n'+JSON.stringify(result));
                     console.log(result.rows[0]);
                     var photo = result.rows[0]['encodedString'];
                     response.status(200).send(photo);
