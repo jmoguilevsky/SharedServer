@@ -127,8 +127,8 @@ module.exports = function() {
                 } else {
                     //response.send(result.rows) ;
                     console.log('result '+'\n'+result);
+                    console.log(result.rows[0]);
                     var photo = result.rows[0]['encodedString'];
-                    console.log(photo);
                     response.status(200).send(photo);
                 }
             });
