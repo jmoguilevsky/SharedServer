@@ -126,7 +126,7 @@ module.exports = function() {
                     response.status(400).send("Error " + err);
                 } else {
                     console.log('result '+'\n'+JSON.stringify(result));
-                    if (result.rows.rowCount === 0) {
+                    if (result.rowCount === 0) {
                         console.log('no tiene foto');
                         response.status(200).send('');
                     }else{
