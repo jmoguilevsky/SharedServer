@@ -20,8 +20,9 @@ var putUpdateUser = puts.putUser;
 var putUpdatePhoto = puts.putPhoto;
 var deleteUser = deletes.deleteUser;
 
-app.use(bodyParser.json());
-app.use(express.bodyParser({limit: '5mb'}));
+//app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 
 app.set('port', (process.env.PORT || 5000));
 
