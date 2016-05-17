@@ -131,6 +131,7 @@ module.exports = function() {
                     }else{
                         console.log(result.rows[0]);
                         var photo = result.rows[0]['encodedString'];
+                        console.log(photo);
                         response.status(200).send(photo);
                     }
                 }
