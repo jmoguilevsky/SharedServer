@@ -139,10 +139,16 @@ module.exports = function() {
         });
     }
 
+    function getUserPhotoDecoded(request, response) {
+        var encodedstring = getUserPhoto(request, response);
+        response.return("data:image; base64, "+encodedstring);
+    }
+
     return {
         getAllUsers: getAllUsers,
         getUser: getUser,
         getAllInterests : getAllInterests,
-        getUserPhoto : getUserPhoto
+        getUserPhoto : getUserPhoto,
+        getUserPhotoDecoded: getUserPhotoDecoded
     }
 }();
