@@ -55,7 +55,7 @@ module.exports = function() {
         items.forEach(function(item) {
             users.push(
                 formatUser(item)
-            );
+                );
         });
         return users;
     }
@@ -112,11 +112,33 @@ module.exports = function() {
                 }
             });
         });
-    }    
+    }
+
+    function getUserPhoto(request, response) {
+        var idUser = request.params.idUser;
+        query = querys.getUserPhoto(idUser);
+
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query(query, function(err, result) {
+                done();
+                if (err) {
+                    console.error(err);
+                    response.status(400).send("Error " + err);
+                } else {
+                    //response.send(result.rows) ;
+                    console.log('result '+'\n'+result);
+                    var photo = result.rows[0]['encodedString'];
+                    console.log(photo);
+                    response.status(200).send(photo);
+                }
+            });
+        });
+    }
 
     return {
         getAllUsers: getAllUsers,
         getUser: getUser,
-        getAllInterests : getAllInterests
+        getAllInterests : getAllInterests,
+        getUserPhoto : getUserPhoto
     }
 }();

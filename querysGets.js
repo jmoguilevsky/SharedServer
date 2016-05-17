@@ -21,11 +21,16 @@ module.exports = function() {
         return 'select array_to_json(array_agg(row_to_json(interest_json))) as Interests from (select category, value from Interest) interest_json;';
     }
 
+    function getUserPhoto(idUser) {
+        return 'SELECT encodedString from photo where idUser =  '+ idUser + ';';
+    }
+
     return {
         getAllUsers: getAllUsers,
         getInterest: selectInterest,
         getUserId: getUserId,
         getUser: getUser,
-        getAllInterests: getAllInterests
+        getAllInterests: getAllInterests,
+        getUserPhoto : getUserPhoto
     }
 }();
