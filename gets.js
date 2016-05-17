@@ -130,7 +130,7 @@ module.exports = function() {
                         response.status(200).send('');
                     }else{
                         console.log(result.rows[0]);
-                        var photo = result.rows[0]['encodedString'];
+                        var photo = result.rows[0].encodedstring;
                         console.log(photo);
                         response.status(200).send(photo);
                     }
