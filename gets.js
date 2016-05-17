@@ -114,7 +114,7 @@ module.exports = function() {
         });
     }
 
-    function getUserPhotoEncodedString(request, response, callback) {
+    function getUserPhoto(request, response) {
         var idUser = request.params.idUser;
         query = querys.getUserPhoto(idUser);
 
@@ -123,40 +123,26 @@ module.exports = function() {
                 done();
                 if (err) {
                     console.error(err);
-                    return response.status(400).send("Error " + err);
+                    response.status(400).send("Error " + err);
                 } else {
                     console.log('result '+'\n'+JSON.stringify(result));
                     if (result.rows.rowCount === 0) {
-                        return '';
+                        response.status(200).send('');
                     }else{
                         console.log(result.rows[0]);
                         var photo = result.rows[0].encodedstring;
                         console.log(photo);
-                        return photo;
+                        response.status(200).send(photo);
                     }
                 }
             });
         });
-    }
-    function getUserPhoto(argument) {
-        var encodedstring = getUserPhotoEncodedString(request, response);
-        if (encodedstring.indexOf("Error") === -1) {
-            response.status(200).send(encodedstring);
-        }
-    }
-
-    function getUserPhotoDecoded(request, response) {
-        var encodedstring = getUserPhotoEncodedString(request, response);
-        if (encodedstring.indexOf("Error") === -1) {
-            response.status(200).send('data:image; base64, '+encodedstring);
-        }
     }
 
     return {
         getAllUsers: getAllUsers,
         getUser: getUser,
         getAllInterests : getAllInterests,
-        getUserPhoto : getUserPhoto,
-        getUserPhotoDecoded: getUserPhotoDecoded
+        getUserPhoto : getUserPhoto
     }
 }();

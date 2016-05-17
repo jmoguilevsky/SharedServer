@@ -14,7 +14,6 @@ var getUsers = gets.getAllUsers;
 var getInterests = gets.getAllInterests;
 var getUser = gets.getUser;
 var getUserPhoto = gets.getUserPhoto;
-var getUserPhotoDecoded = gets.getUserPhotoDecoded;
 var postUser = posts.postNewUser;
 var postInterest = posts.postNewInterest;
 var putUpdateUser = puts.putUser;
@@ -43,7 +42,6 @@ router.route('/').get(function(request, response) {
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
 router.route('/users/:idUser/photo').put(putUpdatePhoto).get(getUserPhoto);
-router.route('/users/:idUser/photo/decoded').get(getUserPhotoDecoded);
 router.route('/interests').get(getInterests).post(postInterest);
 
 app.use(express.static(__dirname + '/views'), router);
