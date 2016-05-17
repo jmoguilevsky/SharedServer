@@ -127,11 +127,12 @@ module.exports = function() {
                 } else {
                     console.log('result '+'\n'+JSON.stringify(result));
                     if (result.rows.rowCount === 0) {
+                        console.log('no tiene foto');
                         response.status(200).send('');
                     }else{
                         console.log(result.rows[0]);
                         var photo = result.rows[0].encodedstring;
-                        console.log(photo);
+                        console.log('photo'+photo);
                         response.status(200).send(photo);
                     }
                 }
