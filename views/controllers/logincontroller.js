@@ -3,13 +3,12 @@ var userApp = angular.module('userApp', []);
 
 
 userApp.controller('LoginController',function ($scope, $http) {
-	$scope.formData = {};
+	$scope.userForm = {};
 
 	$scope.login = function() {
-		$http.post('/login', $scope.formData)
+		$http.post('/login', $scope.userForm)
 		.success(function(data) {
-                $scope.formData = {}; // clear the form so our user is ready to enter another
-                $scope.todos = data;
+                $scope.user = data;
                 console.log(data);
             })
 		.error(function(data) {
