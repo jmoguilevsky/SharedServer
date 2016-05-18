@@ -38,6 +38,9 @@ app.listen(app.get('port'), function() {
 router.route('/').get(function(request, response) {
   response.render('pages/index');
 });
+router.route('/login').get(function(request, response) {
+  response.render('pages/login');
+});
 
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
