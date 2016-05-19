@@ -2,11 +2,11 @@ var userApp = angular.module('userApp', []);
 
 
 
-userApp.controller('LoginController',function ($scope, $http, $location) {
+userApp.controller('LoginController',function ($scope, $http, $window) {
 	$scope.userForm = {};
 
 	$scope.login = function() {
-		$location.path('/');
+		$window.location.href = '/';
 		/*
 		$http.post('https://enigmatic-depths-58073.herokuapp.com/login', $scope.userForm)
 		.success(function(data) {
