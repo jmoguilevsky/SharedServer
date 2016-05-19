@@ -6,6 +6,8 @@ userApp.controller('LoginController',function ($scope, $http, $location) {
 	$scope.userForm = {};
 
 	$scope.login = function() {
+		$location.path('/');
+		/*
 		$http.post('https://enigmatic-depths-58073.herokuapp.com/login', $scope.userForm)
 		.success(function(data) {
 	            $scope.user = data;
@@ -15,6 +17,7 @@ userApp.controller('LoginController',function ($scope, $http, $location) {
 		.error(function(data) {
 			console.log('Error: ' + data);
 		});
+		*/
 	};
 
 });
