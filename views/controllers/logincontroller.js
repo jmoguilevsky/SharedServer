@@ -7,7 +7,7 @@ userApp.controller('LoginController',function ($scope, $http, $window) {
 
 	$scope.login = function() {
 		console.log('try login ');
-		$http.post('https://enigmatic-depths-58073.herokuapp.com/login', {email:"hola"})
+		$http.post('/login', {email:"hola"})
 		.success(function(data) {
 	            $scope.user = data;
 	            console.log(data);
