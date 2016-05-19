@@ -42,6 +42,12 @@ router.route('/login').get(function(request, response) {
   response.render('pages/login');
 });
 
+router.route('/login').post(function (request, response) {
+	response.status(200).send({
+		ok: "ok"
+	});
+});
+
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
 router.route('/users/:idUser/photo').put(putUpdatePhoto).get(getUserPhoto);
