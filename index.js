@@ -40,9 +40,7 @@ router.route('/').get(function(request, response) {
 });
 router.route('/login').get(function(request, response) {
   response.render('pages/login');
-});
-
-router.route('/login').post(function (request, response) {
+}).post(function (request, response) {
 	console.log('me tratan de loguear');
 	response.status(200).send({
 		ok: "ok"
