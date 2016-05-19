@@ -43,6 +43,7 @@ router.route('/login').get(function(request, response) {
 });
 
 router.route('/login').post(function (request, response) {
+	console.log('me tratan de loguear');
 	response.status(200).send({
 		ok: "ok"
 	});
