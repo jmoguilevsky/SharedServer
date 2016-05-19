@@ -6,7 +6,7 @@ userApp.controller('LoginController',function ($scope, $http, $window) {
 	$scope.userForm = {};
 
 	$scope.login = function() {
-		console.log('try login '+ $scope.userForm);
+		console.log('try login ');
 
 		/*$http.post('https://enigmatic-depths-58073.herokuapp.com/login', $scope.userForm)
 		.success(function(data) {
