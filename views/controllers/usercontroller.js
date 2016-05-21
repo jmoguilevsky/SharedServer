@@ -6,8 +6,8 @@ userApp.controller('UserListController',function ($scope, $http) {
 	$http.get('/usersWithPhotos')
 		.success(function(data) {
 			$scope.users = data.users;
-			console.log(data.users);
-		}).then()
+			console.log("data" + data.users);
+		})
 		.error(function(data) {
 			console.log('Error: ' + data);
 	});
