@@ -15,7 +15,7 @@
     <li ng-repeat="item in users" class="media">
       <div class="media-left">
         <a href="{{ item.user.photo_profile_link }}">
-          <img class="media-object img-responsive img-thumbnail" src=" {{ item.user.photo_profile_encodedstring !== null ? 'data:image; base64,' || item.user.photo_profile_encodedstring : '' }}" alt="Profile pic">
+          <img class="media-object img-responsive img-thumbnail" src=" {{ 'data:image; base64,' || item.user.photo_profile_encodedstring }}" alt="Profile pic">
         </a>
       </div>
       <div > 
