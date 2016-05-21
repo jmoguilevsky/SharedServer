@@ -60,6 +60,12 @@ module.exports = function() {
         return users;
     }
 
+    function getAllUsersWithPhotos(request, response) {
+        query = querys.getAllUsersWithPhotos();
+        console.log(query);
+        return getAllItemsInTable(request, response, query, 'users', 'users', addMetadataUsers, formatUsers);
+    }
+
     function getAllUsers(request, response) {
         query = querys.getAllUsers();
         console.log(query);
@@ -144,6 +150,7 @@ module.exports = function() {
         getAllUsers: getAllUsers,
         getUser: getUser,
         getAllInterests : getAllInterests,
-        getUserPhoto : getUserPhoto
+        getUserPhoto : getUserPhoto,
+        getAllUsersWithPhotos: getAllUsersWithPhotos,
     }
 }();
