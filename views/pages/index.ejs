@@ -15,7 +15,7 @@
     <li ng-repeat="item in users" class="media">
       <div class="media-left">
         <a href="{{item.user.photo_profile}}">
-          <img class="media-object img-responsive img-thumbnail" src="{{item.user.photo_profile}}" alt="Profile pic">
+          <img class="media-object img-responsive img-thumbnail" src="data:image; base64, {{item.user.photo_profile}}" alt="Profile pic">
         </a>
       </div>
       <div > 
