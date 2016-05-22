@@ -1,4 +1,4 @@
-var querys = require('../querys/gets');
+var querys = require('../querys/gets.js');
 
 module.exports = function() {
     var pg = require('pg');
