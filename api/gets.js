@@ -39,7 +39,7 @@ module.exports = function() {
         }
         console.log(json);
         response.send(json);
-    }    
+    }
 
     function formatUser(user) {
         return {
@@ -56,7 +56,7 @@ module.exports = function() {
         items.forEach(function(item) {
             users.push(
                 formatUser(item)
-                );
+            );
         });
         return users;
     }
@@ -112,7 +112,7 @@ module.exports = function() {
                     response.send("Error " + err);
                 } else {
                     //response.send(result.rows) ;
-                    console.log(logMessage+'\n'+result);
+                    console.log(logMessage + '\n' + result);
                     var items = result.rows[0][resultProperty];
                     console.log(items);
                     return addMetadataFunction(response, formatData(items));
@@ -132,14 +132,14 @@ module.exports = function() {
                     console.error(err);
                     response.status(400).send("Error " + err);
                 } else {
-                    console.log('result'+'\n'+JSON.stringify(result));
+                    console.log('result' + '\n' + JSON.stringify(result));
                     if (result.rowCount === 0) {
                         console.log('no tiene foto');
                         response.status(200).send('');
-                    }else{
+                    } else {
                         console.log(result.rows[0]);
                         var photo = result.rows[0].encodedstring;
-                        console.log('photo'+photo);
+                        console.log('photo' + photo);
                         response.status(200).send(photo);
                     }
                 }
@@ -150,8 +150,8 @@ module.exports = function() {
     return {
         getAllUsers: getAllUsers,
         getUser: getUser,
-        getAllInterests : getAllInterests,
-        getUserPhoto : getUserPhoto,
+        getAllInterests: getAllInterests,
+        getUserPhoto: getUserPhoto,
         getAllUsersWithPhotos: getAllUsersWithPhotos,
     }
 }();

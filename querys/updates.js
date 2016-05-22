@@ -1,6 +1,6 @@
-module.exports = function () {
-    var querysInserts = require('./querysInserts');
+var querysInserts = require('./inserts');
 
+module.exports = function () {
 
     function queryUpdateUserProfile(user) {
         return 'update UserProfile set (name, alias) = (\'' + user.name + '\',\'' + user.alias + '\') where id = ' + user.id + ' and email =\'' + user.email + '\';'

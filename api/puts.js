@@ -1,6 +1,7 @@
+var updateQuerys = require('../querys/updates.js');
+
 module.exports = function() {
     var pg = require('pg');
-    var updateQuerys =require('./querysUpdates.js');
 
     updateUser = function(request, response) {
         var user = request.body.user;
@@ -55,6 +56,6 @@ module.exports = function() {
 
     return {
         putUser: updateUser,
-        putPhoto : updatePhoto
+        putPhoto: updatePhoto
     }
 }();

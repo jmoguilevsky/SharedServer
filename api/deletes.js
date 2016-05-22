@@ -1,12 +1,13 @@
-module.exports = function () {
-	var pg = require('pg');
-	var deleteQuerys = require('./querysDeletes.js');
+var deleteQuerys = require('../querys/deletes.js');
 
-	function deleteUser (request, response) {
-		var idUser = request.params.idUser;
-		console.log('elimino '+idUser);
+module.exports = function() {
+    var pg = require('pg');
 
-		var query = deleteQuerys.queryDeleteUser(idUser);
+    function deleteUser(request, response) {
+        var idUser = request.params.idUser;
+        console.log('elimino ' + idUser);
+
+        var query = deleteQuerys.queryDeleteUser(idUser);
         console.log(query);
 
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -26,9 +27,9 @@ module.exports = function () {
                 }
             });
         });
-	}
+    }
 
-	return{
-		deleteUser : deleteUser
-	}
+    return {
+        deleteUser: deleteUser
+    }
 }();
