@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path')
 
-var gets = require('./api/gets.js');
+var gets = require('./api/gets');
 var posts = require('./posts');
 var puts = require('./puts');
 var deletes = require('./deletes');
