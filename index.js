@@ -4,9 +4,9 @@ var bodyParser = require('body-parser');
 var path = require('path')
 
 var gets = require('./api/gets');
-var posts = require('./posts');
-var puts = require('./puts');
-var deletes = require('./deletes');
+var posts = require('./api/posts');
+var puts = require('./api/puts');
+var deletes = require('./api/deletes');
 var app = express();
 var router = express.Router();
 
