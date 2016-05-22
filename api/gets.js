@@ -1,7 +1,8 @@
+var querys = require('../querys/gets.js');
+
 module.exports = function() {
     var pg = require('pg');
     var version = 0.1;
-    var querys = require('../querys/gets.js');
 
     function addMetadataUser(response, item) {
         var json = item;
