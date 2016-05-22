@@ -1,8 +1,9 @@
+var getQuerys = require('../querys/gets.js');
+
 module.exports = function() {
     var pg = require('pg');
     var version = 0.1;
     var postQuerys = require('./querysInserts.js');
-    var getQuerys = require('../querys/gets.js');
 
     function postNewUser(request, response) {
 
