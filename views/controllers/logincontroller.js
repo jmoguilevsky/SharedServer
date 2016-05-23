@@ -12,7 +12,7 @@ userApp.controller('LoginController',function ($scope, $http, $window) {
 		.success(function(data) {
 	            $scope.user = data;
 	            //console.log(data);
-	            //$window.location.href = '/';
+	            $window.location.href = '/';
             })
 		.error(function(data) {
 			console.log('Error: ' + data);

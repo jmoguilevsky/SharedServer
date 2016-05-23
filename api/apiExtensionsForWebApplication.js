@@ -16,9 +16,11 @@ module.exports = function() {
                 } else {
                     //response.send(result.rows) ;
                     console.log('count ' + result.rowCount);
-                    console.log(result);
-                    console.log('user');
-                    response.status(200).send('ok');
+                    if (result.rowCount === 0) {
+                        response.status(401).send('el usuario no existe');    
+                    }else{
+                        response.status(200).send('se logueo: '+ result.rows[0]);
+                    }
                 }
             });
         });
