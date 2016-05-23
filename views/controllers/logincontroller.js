@@ -6,8 +6,8 @@ userApp.controller('LoginController',function ($scope, $http, $window) {
 	$scope.userForm = {};
 
 	$scope.login = function() {
-		console.log('try login ');
-		$http.post('/login', {email:"hola"})
+		console.log('');
+		$http.post('/login', $scope.userForm)
 		.success(function(data) {
 	            $scope.user = data;
 	            console.log(data);

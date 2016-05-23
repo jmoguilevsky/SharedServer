@@ -7,6 +7,7 @@ var gets = require('./api/gets');
 var posts = require('./api/posts');
 var puts = require('./api/puts');
 var deletes = require('./api/deletes');
+var extensions = require('./api/apiExtensionsForWebApplication');
 var app = express();
 var router = express.Router();
 
@@ -20,6 +21,7 @@ var postInterest = posts.postNewInterest;
 var putUpdateUser = puts.putUser;
 var putUpdatePhoto = puts.putPhoto;
 var deleteUser = deletes.deleteUser;
+var login = extensions.login;
 
 //app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '5mb'}));
@@ -41,12 +43,7 @@ router.route('/').get(function(request, response) {
 });
 router.route('/login').get(function(request, response) {
   response.render('pages/login');
-}).post(function (request, response) {
-	console.log('me tratan de loguear');
-	response.status(200).send({
-		ok: "ok"
-	});
-});
+}).post(login);
 
 router.route('/users').get(getUsers).post(postUser);
 router.route('/users/:idUser').get(getUser).put(putUpdateUser).delete(deleteUser);
