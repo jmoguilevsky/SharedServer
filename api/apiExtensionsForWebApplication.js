@@ -6,7 +6,7 @@ module.exports = function() {
         console.log(request.body);
         var email = request.body.user.email;
         var password = request.body.user.password;
-        query = 'select * from UserProfile where email = \''+email+'\' and password = \''+password+'\';';
+        query = 'select * from admin where email = \''+email+'\' and password = \''+password+'\';';
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query(query, function(err, result) {
                 done();
