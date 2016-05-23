@@ -3,7 +3,7 @@ module.exports = function() {
     var version = 0.1;
 
     function login(request, response) {
-        console.log(request.body);
+        console.log(request.body.email);
         query = 'select * from UserProfile';
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query(query, function(err, result) {
