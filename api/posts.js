@@ -8,7 +8,7 @@ module.exports = function() {
     function postNewUser(request, response) {
 
         var body = 'Error';
-        console.log(request.body);
+        //console.log(request.body);
         var user = request.body.user;
         console.log('user\n' + user);
         var interests = request.body.user.interests;

@@ -12,7 +12,7 @@
 <body ng-controller="LoginController">
   <div class="container">
 
-    <form class="form-signin">
+    <form class="form-signin" ng-submit="login()">
       <h2 class="form-signin-heading">Please sign in</h2>
       <label for="exampleInputEmail1" class="sr-only">Email</label>
       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="userForm.email" required autofocus>
@@ -20,7 +20,7 @@
       <label for="exampleInputPassword1" class="sr-only">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="userForm.password" required >
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
     </form>
 
   </div> <!-- /container -->
