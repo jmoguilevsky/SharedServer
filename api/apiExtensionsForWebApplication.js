@@ -3,6 +3,7 @@ module.exports = function() {
     var version = 0.1;
 
     function login(request, response) {
+        console.log(request.body)
         var email = request.body.email;
         var password = request.body.password;
         query = 'select * from UserProfile where email = \''+email+'\' and password = \''+password+'\';';
