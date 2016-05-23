@@ -4,7 +4,7 @@ module.exports = function() {
 
     function login(request, response) {
         console.log(request.body);
-        query = 'select * from userprofile';
+        query = 'select * from UserProfile';
         pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query(query, function(err, result) {
                 done();
