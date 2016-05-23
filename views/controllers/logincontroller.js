@@ -7,9 +7,9 @@ userApp.controller('LoginController',function ($scope, $http, $window) {
 
 	$scope.login = function() {
 		console.log('');
-		$http.post('/login', {
-			"email" : $scope.userForm.email,
-			"password" : $scope.userForm.password
+		$http.post('/login',{
+			"email":"asd",
+			"password": "asd"
 		})
 		.success(function(data) {
 	            $scope.user = data;
