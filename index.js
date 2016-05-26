@@ -46,7 +46,7 @@ router.route('/login').get(function(request, response) {
   response.render('pages/login');
 }).post(login);
 
-router.route('/profile').get(function(request, response) {
+router.route('/profile/:idUser').get(function(request, response) {
   response.render('pages/profile');
 });//.post(login)
 
