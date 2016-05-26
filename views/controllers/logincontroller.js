@@ -1,7 +1,5 @@
 var userApp = angular.module('userApp', []);
 
-
-
 userApp.controller('LoginController',function ($scope, $http, $window) {
 	$scope.userForm = {};
 

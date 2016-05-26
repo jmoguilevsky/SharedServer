@@ -1,7 +1,5 @@
 var userApp = angular.module('userApp', []);
 
-
-
 userApp.controller('ProfileController',function ($scope, $http, $routeParams) {
 	$scope.user = {};
 
