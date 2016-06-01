@@ -10,7 +10,6 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 	$http.get('/users/'+ idUser)
 	.success(function(data) {
 		$scope.user = data.user;
-		console.log(data);
 		console.log(data.user);
 	})
 	.error(function(data) {

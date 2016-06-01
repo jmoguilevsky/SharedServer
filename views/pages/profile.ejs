@@ -6,6 +6,11 @@
   <% include ../partials/header.ejs %>
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css" />
   <script src="/controllers/profilecontroller.js"></script>
+  <style >
+    td.vertically-centered:{
+      vertical-align: middle !important;
+    }
+  </style>
 
 </header>
 <body ng-controller="ProfileController">
@@ -19,58 +24,71 @@
         </div>
         <div class="panel-body">
           <div class="row">
-          <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-responsive"> </div>
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic"  width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-responsive"> </div>
             <div class=" col-md-9 col-lg-9 "> 
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td>Email:</td>
-                    <td class="value">{{ user.email }}</td>
-                  </tr>
-                  <tr>
-                    <td>Hire date:</td>
-                    <td  class="value">06/23/2013</td>
-                  </tr>
-                  <tr>
-                    <td>Date of Birth</td>
-                    <td class="value">01/24/1988</td>
-                  </tr>
+              <form class="form-signin" ng-submit="postUser()">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td >Email</td>
+                      <td >{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: middle">Name</td>
+                      <td class="value-label">{{ user.name }}</td>
+                      <td class="value-input">
+                        <input type="text" class="form-control"  id="inputName" placeholder="Name" ng-model="userForm.Name" value="{{ user.name }}" required >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: middle">Alias</td>
+                      <td class="value-label">{{ user.alias }}</td>
+                      <td class="value-input">
+                        <input type="text" class="form-control"  id="inputAlias" placeholder="Alias" ng-model="userForm.Alias" value="{{ user.alias }}" required >
+                      </td>
+                    </tr>
+                    <tr>
+                    <td style="vertical-align: middle" > Sex </td>
+                      <td class="value-label">{{ user.sex }}</td>
+                      <td class="value-input">
+                        <input type="text" class="form-control"  id="inputSex" placeholder="Sex" ng-model="userForm.sex" value="{{ user.sex }}" required >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td >
+                        <button class="value-input btn btn-lg btn-primary btn-block" type="submit" >Save changes</button>
+                      </td>
+                      <td></td>
 
-                  <tr>
-                    <td> Gender </td>
-                    <td class="value"> Male </td>
-                  </tr>
-                  <tr>
-                    <td>Home Address</td>
-                    <td class="value">Metro Manila,Philippines</td>
-                  </tr>
-                  <tr>
-                    <td>Email</td>
-                    <td class="value"><a href="mailto:info@support.com">info@support.com</a></td>
-                  </tr>
-                  <tr>
-                    <td>Phone Number</td>
-                    <td class="value">123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </tr>
+                    
+                  </tbody>
+                </table>  
+              </form>
 
-              <a href="#" class="btn btn-primary">My Sales Performance</a>
-              <a href="#" class="btn btn-primary">Team Sales Performance</a>
+              <a href="#" class="btn btn-primary">Edit interests</a>
+              
             </div>
           </div>
         </div>
         <div class="panel-footer">
-          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-          <span class="pull-right">
-            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-          </span>
+          <a href="#" id="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+          <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
         </div>
       </div>
     </div>
 
   </div> <!-- /container -->
 </body>
+
+<script type="text/javascript">
+  $("#editUser").click(function () {
+    $(".value-input").show();
+    $(".value-label").hide();
+  });
+  $(function () {
+    $(".value-input").hide();
+  })  
+</script>
+
 </html>
