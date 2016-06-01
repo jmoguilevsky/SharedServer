@@ -38,8 +38,8 @@ module.exports = function() {
     }
 
     function queryInsertUser(user) {
-        return 'INSERT INTO UserProfile(name, alias, email) ' +
-            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\')';
+        return 'INSERT INTO UserProfile(name, alias, email, sex) ' +
+            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\', \'' + user.sex + '\')'
     }
 
     function queryInsertLocation(user, idUser) {
