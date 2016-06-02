@@ -14,7 +14,7 @@ module.exports = function() {
             queryInsertUser(user) + ' RETURNING id into ' + newUserVariable + ';' +
             queryInsertLocation(user, newUserVariable) +
             interests +
-            queryInsertPhoto(user) +
+            queryInsertPhoto(newUserVariable) +
             'END $$;';
     }
 
