@@ -19,7 +19,7 @@ module.exports = function() {
     }
 
     function queryInsertPhoto(idUser) {
-        return 'insert into Photo (iduser, encodedString) values ('+ idUser +'\',' + defaultPhoto.defaultPhoto + '\');'
+        return 'insert into Photo (iduser, encodedString) values ('+ idUser +',\'' + defaultPhoto.defaultPhoto + '\');'
     }
 
     function queryInsertInterest(interest, lastChar) {
