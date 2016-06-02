@@ -1,4 +1,4 @@
-var defaultPhoto = = require('./defaultImage');
+var defaultPhoto = require('./defaultPhoto');
 module.exports = function() {
 
     function queryInsertUserWithInterests(user) {
