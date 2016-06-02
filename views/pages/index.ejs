@@ -5,27 +5,28 @@
 
   <% include ../partials/header.ejs %>
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css" />
+  <link rel="stylesheet" type="text/css" href="/public/stylesheets/index.css" />
   <script src="controllers/usercontroller.js"></script>
 
 </header>
 <body ng-controller="UserListController">
-  <% include ../partials/nav.ejs %>
-
-  <ul class="media-list">
-    <li ng-repeat="item in users" class="media">
-      <div class="media-left">
+  <ul class="list">
+    <li class="list-item" ng-repeat="item in users">
+      <div class="list-content">
+        <a href="{{ '/profile/' + item.user.userid }}"> 
+         <h2>{{ item.user.name}}</h2>
+       </a>
+       
+       <figure class="figure">
         <a href="{{ item.user.photo_profile_link }}">
-          <img class="media-object img-responsive img-thumbnail" src=" {{ 'data:image; base64,' + item.user.photo_profile_encodedstring }}" alt="Profile pic">
-        </a>
-      </div>
-      <div > 
-        <h4 class="media-heading">{{item.user.name}}</h4> 
-        <p>
-          {{item.user.alias}}
-        </p>
-      </div>
-    </li>
-  </ul>
+        <img class="figure-img img-fluid img-rounded"  src=" {{ 'data:image; base64,' + item.user.photo_profile_encodedstring }}" alt="Profile pic">
+       </a>
+       <figcaption class="figure-caption">{{item.user.alias}}</figcaption>
+     </figure>
+     <a href="{{ '/profile/' + item.user.userid }}" class="btn btn-primary">Edit</a>
+   </div>
+ </li>
+</ul>
 
 </body>
 </html>
