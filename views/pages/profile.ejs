@@ -14,7 +14,6 @@
 
 </header>
 <body ng-controller="ProfileController">
-  <% include ../partials/nav.ejs %>
 
   <div class="container">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
@@ -24,61 +23,63 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic"  width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-responsive"> </div>
-            <div class=" col-md-9 col-lg-9 "> 
-              <form class="form-signin" ng-submit="postUser()">
-                <table class="table table-user-information">
-                  <tbody>
-                    <tr>
-                      <td >Email</td>
-                      <td >{{ user.email }}</td>
-                    </tr>
-                    <tr>
-                      <td style="vertical-align: middle">Name</td>
-                      <td class="value-label">{{ user.name }}</td>
-                      <td class="value-input">
-                        <input type="text" class="form-control"  id="inputName" placeholder="Name" ng-model="userForm.Name" value="{{ user.name }}" required >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="vertical-align: middle">Alias</td>
-                      <td class="value-label">{{ user.alias }}</td>
-                      <td class="value-input">
-                        <input type="text" class="form-control"  id="inputAlias" placeholder="Alias" ng-model="userForm.Alias" value="{{ user.alias }}" required >
-                      </td>
-                    </tr>
-                    <tr>
+            <div class="col-md-3 col-lg-3 ">
+             <img alt="User Pic"  width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-responsive"> 
+           </div>
+           <div class=" col-md-9 col-lg-9 "> 
+            <form class="form-signin" ng-submit="postUser()">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td >Email</td>
+                    <td >{{ user.email }}</td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle">Name</td>
+                    <td class="value-label">{{ user.name }}</td>
+                    <td class="value-input">
+                      <input type="text" class="form-control"  id="inputName" placeholder="Name" ng-model="userForm.Name" value="{{ user.name }}" required >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle">Alias</td>
+                    <td class="value-label">{{ user.alias }}</td>
+                    <td class="value-input">
+                      <input type="text" class="form-control"  id="inputAlias" placeholder="Alias" ng-model="userForm.Alias" value="{{ user.alias }}" required >
+                    </td>
+                  </tr>
+                  <tr>
                     <td style="vertical-align: middle" > Sex </td>
-                      <td class="value-label">{{ user.sex }}</td>
-                      <td class="value-input">
-                        <input type="text" class="form-control"  id="inputSex" placeholder="Sex" ng-model="userForm.sex" value="{{ user.sex }}" required >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td >
-                        <button class="value-input btn btn-lg btn-primary btn-block" type="submit" >Save changes</button>
-                      </td>
-                      <td></td>
+                    <td class="value-label">{{ user.sex }}</td>
+                    <td class="value-input">
+                      <input type="text" class="form-control"  id="inputSex" placeholder="Sex" ng-model="userForm.sex" value="{{ user.sex }}" required >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td >
+                      <button class="value-input btn btn-lg btn-primary btn-block" type="submit" >Save changes</button>
+                    </td>
+                    <td></td>
 
-                    </tr>
-                    
-                  </tbody>
-                </table>  
-              </form>
+                  </tr>
+                  
+                </tbody>
+              </table>  
+            </form>
 
-              <a href="#" class="btn btn-primary">Edit interests</a>
-              
-            </div>
+            <a href="#" class="btn btn-primary">Edit interests</a>
+            
           </div>
         </div>
-        <div class="panel-footer">
-          <a href="#" id="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-          <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
+      </div>
+      <div class="panel-footer">
+        <a href="#" id="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
       </div>
     </div>
+  </div>
 
-  </div> <!-- /container -->
+</div> <!-- /container -->
 </body>
 
 <script type="text/javascript">
