@@ -1,3 +1,4 @@
+var defaultPhoto = require('./defaultImage.js');
 module.exports = function() {
 
     function queryInsertUserWithInterests(user) {
@@ -13,7 +14,12 @@ module.exports = function() {
             queryInsertUser(user) + ' RETURNING id into ' + newUserVariable + ';' +
             queryInsertLocation(user, newUserVariable) +
             interests +
+            queryInsertPhoto(user) +
             'END $$;';
+    }
+
+    function queryInsertPhoto(idUser) {
+        return 'insert into Photo (iduser, encodedString) =  ('+ idUser +'\'' + defaultPhoto.defaultImage() + '\');'
     }
 
     function queryInsertInterest(interest, lastChar) {
