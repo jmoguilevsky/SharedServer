@@ -17,10 +17,12 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 		});
 
 	$scope.postUser = function() {
+		debugger;
         console.log("posting data...");
-        formData = $scope.user;
-        console.log(formData);
-        $http.post('/users/'+ idUser, JSON.stringify(formData))
+        var newUser = $scope.user;
+        newUser.interests = JSON.stringify($scope.user.interests);
+        console.log(newUser);
+        $http.post('/users/'+ idUser, newUser)
     		.success(function(){ 
 				$window.location.reload(); 
 			})
