@@ -22,7 +22,12 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         var newUser = $scope.user;
         newUser.interests = JSON.stringify($scope.user.interests);
         console.log(newUser);
-        $http.post('/users/'+ idUser, newUser)
+        $http.post('/users/'+ idUser, { 
+        		user: newUser.
+        		metadata: {
+        			version: 0.1	
+        		}
+        	})
     		.success(function(){ 
 				$window.location.reload(); 
 			})
