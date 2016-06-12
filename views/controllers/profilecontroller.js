@@ -8,11 +8,24 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 
 
 	$http.get('/users/'+ idUser)
-	.success(function(data) {
-		$scope.user = data.user;
-		console.log(data.user);
-	})
-	.error(function(data) {
-		console.log('Error: ' + data);
-	});
+		.success(function(data) {
+			$scope.user = data.user;
+			console.log(data.user);
+		})
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
+
+	$scope.postUser = function() {
+        console.log("posting data...");
+        formData = $scope.user;
+        console.log(formData);
+        $http.post('/users/'+ idUser, JSON.stringify(formData))
+    		.success(function(){ 
+				$window.location.reload(); 
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
+    };
 });

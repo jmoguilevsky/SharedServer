@@ -6,90 +6,87 @@
   <% include ../partials/header.ejs %>
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css" />
   <script src="/controllers/profilecontroller.js"></script>
-  <style >
-    td.vertically-centered:{
-      vertical-align: middle !important;
-    }
-  </style>
 
 </header>
+
 <body ng-controller="ProfileController">
 
   <div class="container">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{ user.name }}</h3>
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">{{ user.name }}</h3>
         </div>
-        <div class="panel-body">
+        <div class="card-block">
           <div class="row">
             <div class="col-md-3 col-lg-3 ">
-             <img alt="User Pic"  width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-responsive"> 
-           </div>
-           <div class=" col-md-9 col-lg-9 "> 
-            <form class="form-signin" ng-submit="postUser()">
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td >Email</td>
-                    <td >{{ user.email }}</td>
-                  </tr>
-                  <tr>
-                    <td style="vertical-align: middle">Name</td>
-                    <td class="value-label">{{ user.name }}</td>
-                    <td class="value-input">
-                      <input type="text" class="form-control"  id="inputName" placeholder="Name" ng-model="userForm.Name" value="{{ user.name }}" required >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="vertical-align: middle">Alias</td>
-                    <td class="value-label">{{ user.alias }}</td>
-                    <td class="value-input">
-                      <input type="text" class="form-control"  id="inputAlias" placeholder="Alias" ng-model="userForm.Alias" value="{{ user.alias }}" required >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="vertical-align: middle" > Sex </td>
-                    <td class="value-label">{{ user.sex }}</td>
-                    <td class="value-input">
-                      <input type="text" class="form-control"  id="inputSex" placeholder="Sex" ng-model="userForm.sex" value="{{ user.sex }}" required >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td >
-                      <button class="value-input btn btn-lg btn-primary btn-block" type="submit" >Save changes</button>
-                    </td>
-                    <td></td>
+              <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-fluid"> 
+            </div>
+            <div class=" col-md-9 col-lg-9 "> 
+              <form class="form-signin" ng-submit="postUser()">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td >Email</td>
+                      <td>
+                        <input type="text" readonly="readonly" class="form-control"  id="inputEmail" placeholder="Email" ng-model="user.email">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: middle">Name</td>
+                      <td>
+                        <input type="text" readonly="readonly" class="form-control editable"  id="inputName" placeholder="Name" ng-model="user.name" required >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: middle">Alias</td>
+                      <td>
+                        <input type="text" readonly="readonly" class="form-control editable"  id="inputAlias" placeholder="Alias" ng-model="user.alias" required >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: middle" > Sex </td>
+                      <td >
+                        <input type="text" readonly="readonly" class="form-control editable"  id="inputSex" placeholder="Sex" ng-model="user.sex" required >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td >
+                        <button class="value-input btn btn-lg btn-primary btn-block" id="btnSubmit" type="submit" >Save changes</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>  
+              </form>
 
-                  </tr>
-                  
-                </tbody>
-              </table>  
-            </form>
+              <a href="#" class="btn btn-primary">Edit interests</a>
 
-            <a href="#" class="btn btn-primary">Edit interests</a>
-            
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel-footer">
-        <a href="#" id="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+        <div class="card-footer">
+          <a href="#" id="editUser" data-original-title="Edit this user" title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">
+            <span class="octicon octicon-pencil"></span>
+          </a>
+          <a data-original-title="Remove this user" title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger">
+            <span class="octicon octicon-x"></span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-</div> <!-- /container -->
+  </div> <!-- /container -->
 </body>
 
 <script type="text/javascript">
   $("#editUser").click(function () {
-    $(".value-input").show();
-    $(".value-label").hide();
+    $("#btnSubmit").show();
+    $("form table tr td input.editable").prop('readonly','');
   });
   $(function () {
-    $(".value-input").hide();
-  })  
+    $("#btnSubmit").hide();
+  })
 </script>
 
 </html>
