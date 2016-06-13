@@ -23,7 +23,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         newUser.interests = JSON.stringify($scope.user.interests);
         console.log(newUser);
         $http.post('/users/'+ idUser, { 
-        		user: newUser.
+        		user: newUser,
         		metadata: {
         			version: 0.1	
         		}
