@@ -20,7 +20,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 		debugger;
         console.log("posting data...");
         var newUser = $scope.user;
-        
+  		/*      
         var interests = '[';
         $scope.user.interests.forEach(function (interest) {
         	interests += JSON.stringify(interest) + ',';
@@ -30,7 +30,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         }
         interests += ']';
         newUser.interests = interests;
-
+		*/
         console.log(newUser);
         $http.put('/users/'+ idUser, { 
         		user: newUser,
