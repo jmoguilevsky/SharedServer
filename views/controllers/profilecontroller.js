@@ -22,7 +22,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         var newUser = $scope.user;
         
         var interests = '[';
-        $scope.user.interests.each(function (interest) {
+        $scope.user.interests.every(function (interest) {
         	interests += JSON.stringify(interest) + ',';
         });
         if (interests.length > 1) {
