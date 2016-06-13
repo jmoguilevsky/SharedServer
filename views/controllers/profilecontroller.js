@@ -20,7 +20,16 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 		debugger;
         console.log("posting data...");
         var newUser = $scope.user;
-        newUser.interests = JSON.stringify($scope.user.interests);
+        
+        newUser.interests = '[';
+        $scope.user.interests.each(function (interest) {
+        	newUser.interests += JSON.stringify(interest) + ',';
+        });
+        if (newUser.interests.length > 1) {
+        	newUser.interests = newUser.interests.substr(newUser.interests.length - 1);
+        }
+        newUser.interests += ']';
+
         console.log(newUser);
         $http.post('/users/'+ idUser, { 
         		user: newUser,
