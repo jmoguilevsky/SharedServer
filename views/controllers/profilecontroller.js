@@ -21,14 +21,15 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         console.log("posting data...");
         var newUser = $scope.user;
         
-        newUser.interests = '[';
+        var interests = '[';
         $scope.user.interests.each(function (interest) {
-        	newUser.interests += JSON.stringify(interest) + ',';
+        	interests += JSON.stringify(interest) + ',';
         });
-        if (newUser.interests.length > 1) {
-        	newUser.interests = newUser.interests.substr(newUser.interests.length - 1);
+        if (interests.length > 1) {
+        	interests = interests.substr(interests.length - 1);
         }
-        newUser.interests += ']';
+        interests += ']';
+        newUser.interests = interests;
 
         console.log(newUser);
         $http.post('/users/'+ idUser, { 
