@@ -6,6 +6,7 @@ module.exports = function() {
     updateUser = function(request, response) {
         var user = request.body.user;
         console.log('update the profile of the user\n' + user);
+        console.log('interests \n' + user.interests);
         var query = updateQuerys.queryUpdateUser(user);
         console.log(query);
         //var selectInterest = 'SELECT id from UserProfile where email = \'' + user.email + '\' ;';
