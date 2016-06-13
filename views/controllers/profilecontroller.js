@@ -26,7 +26,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         	interests += JSON.stringify(interest) + ',';
         });
         if (interests.length > 1) {
-        	interests = interests.substr(1, interests.length - 1);
+        	interests = interests.substr(0, interests.length - 1);
         }
         interests += ']';
         newUser.interests = interests;
