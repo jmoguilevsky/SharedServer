@@ -16,21 +16,9 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 			console.log('Error: ' + data);
 		});
 
-	$scope.postUser = function() {
-		debugger;
+	$scope.editUser = function() {
         console.log("posting data...");
         var newUser = $scope.user;
-  		/*      
-        var interests = '[';
-        $scope.user.interests.forEach(function (interest) {
-        	interests += JSON.stringify(interest) + ',';
-        });
-        if (interests.length > 1) {
-        	interests = interests.substr(0, interests.length - 1);
-        }
-        interests += ']';
-        newUser.interests = interests;
-		*/
         console.log(newUser);
         $http.put('/users/'+ idUser, { 
         		user: newUser,

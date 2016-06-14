@@ -23,7 +23,7 @@
               <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-fluid"> 
             </div>
             <div class=" col-md-9 col-lg-9 "> 
-              <form class="form-signin" ng-submit="postUser()">
+              <form class="form-signin" ng-submit="editUser()">
                 <table class="table table-user-information">
                   <tbody>
                     <tr>
@@ -61,7 +61,14 @@
               </form>
 
               <a href="#" class="btn btn-primary">Edit interests</a>
-
+              <div class="card-deck">
+                <div class="card" ng-repeat="interest in user.interests">
+                  <div class="card-block">
+                    <h5 class="card-title">{{ interest.category }}</h5>
+                    <p class="card-text"> {{ interest.value }} </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
