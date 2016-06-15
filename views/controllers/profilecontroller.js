@@ -1,4 +1,4 @@
-var userApp = angular.module('userApp', ['naif.base64']);
+var userApp = angular.module('userApp', []);
 
 userApp.controller('ProfileController',function ($scope, $http, $window) {
 	var re = /[^\/].*[\/]([0-9]*)+/; 
