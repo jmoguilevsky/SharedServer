@@ -1,6 +1,6 @@
 var userApp = angular.module('userApp', ['naif.base64']);
 
-userApp.controller('ProfileController', [function ($scope, $http, $window) {
+userApp.controller('ProfileController', function ($scope, $http, $window) {
 	var re = /[^\/].*[\/]([0-9]*)+/; 
 
 	var idUser =$window.location.href.split(re)[1];
