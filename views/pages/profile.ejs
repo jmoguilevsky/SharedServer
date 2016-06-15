@@ -25,7 +25,7 @@
                   <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
                   <figcaption class="figure-caption" id="fileInput" style="visibility: hidden;">
                     <label class="file">
-                      <input type="file" ng-model="user.photo_profile" base-sixty-four-input>
+                      <input type="file" ng-model="user.photo_profile" onload="onload" base-sixty-four-input>
                       <span class="file-custom"></span>
                     </label>
                   </figcaption>
