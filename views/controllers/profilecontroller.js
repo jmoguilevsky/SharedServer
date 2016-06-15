@@ -22,6 +22,7 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
         console.log("posting data...");
         var newUser = $scope.user;
         console.log(newUser);
+        debugger;
         $http.put('/users/'+ idUser, { 
         		user: newUser,
         		metadata: {
