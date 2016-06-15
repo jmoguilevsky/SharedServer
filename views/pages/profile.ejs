@@ -22,7 +22,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
               <figure class="figure">
                 <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
-                <figcaption class="figure-caption">
+                <figcaption class="figure-caption" id="fileInput" style="visibility: hidden;">
                   <label class="file">
                     <input type="file" id="file">
                     <span class="file-custom"></span>
@@ -116,12 +116,14 @@
     $("#btnCancel").show();
     $("form table tr td input.editable").prop('readonly','');
     $("table tbody th").prop('style','');
+    $("#fileInput").prop('style','');
   });
   $("#btnCancel").click(function () {
     $("#btnSubmit").hide();
     $("#btnCancel").hide();
     $("form table tr td input.editable").prop('readonly','readonly');
     $("table tbody th").prop('style','visibility: hidden;');
+    $("#fileInput").prop('style','visibility: hidden;');
   });
   $(function () {
     $("#btnSubmit").hide();
