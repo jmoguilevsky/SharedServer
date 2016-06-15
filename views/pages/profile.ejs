@@ -19,9 +19,19 @@
         </div>
         <div class="card-block">
           <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
-              <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="img-fluid"> 
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+              <figure class="figure">
+                <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
+                <figcaption class="figure-caption">
+                  <label class="file">
+                    <input type="file" id="file">
+                    <span class="file-custom"></span>
+                  </label>
+                </figcaption>
+              </figure>
             </div>
+          </div>
+          <div class="row">
             <div class=" col-xs-12 col-sm-12 col-md-9 col-lg-9"> 
               <form class="form-signin" ng-submit="editUser()">
                 <table class="table table-user-information">
@@ -68,10 +78,10 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="interest in user.interests">
-                    <th scope="row">
-                      <button type="button" class="pull-xs-left btn btn-sm btn-danger">
+                    <th scope="row" style="visibility: hidden;">
+                      <a href="#" ng-click="removeInterest($index)" class="pull-xs-left btn btn-sm btn-danger">
                         Remove
-                      </button>
+                      </a>
                     </th>
                     <td>{{ interest.category }}</td>
                     <td>{{ interest.value }}</td>
@@ -83,6 +93,7 @@
           </div>
           <div class="row" style="margin-top: 2%;margin-bottom: 2%">
             <button class="value-input btn btn-lg btn-primary btn-block" id="btnSubmit" type="submit" >Save changes</button>
+            <button class="value-input btn btn-lg btn-primary btn-block" id="btnCancel" ng-click="cancelEdit()" >Cancel changes</button>
           </div>
         </div>
         <div class="card-footer">
@@ -102,10 +113,19 @@
 <script type="text/javascript">
   $("#editUser").click(function () {
     $("#btnSubmit").show();
+    $("#btnCancel").show();
     $("form table tr td input.editable").prop('readonly','');
+    $("table tbody th").prop('style','');
+  });
+  $("#btnCancel").click(function () {
+    $("#btnSubmit").hide();
+    $("#btnCancel").hide();
+    $("form table tr td input.editable").prop('readonly','readonly');
+    $("table tbody th").prop('style','visibility: hidden;');
   });
   $(function () {
     $("#btnSubmit").hide();
+    $("#btnCancel").hide();
   })
 </script>
 

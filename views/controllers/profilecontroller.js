@@ -4,12 +4,14 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 	var re = /[^\/].*[\/]([0-9]*)+/; 
 
 	var idUser =$window.location.href.split(re)[1];
+	var originalUser = {};
 	console.log(idUser);
 
 
 	$http.get('/users/'+ idUser)
 		.success(function(data) {
 			$scope.user = data.user;
+			originalUser = jQuery.extend(true, {}, $scope.user);
 			console.log(data.user);
 		})
 		.error(function(data) {
@@ -33,4 +35,15 @@ userApp.controller('ProfileController',function ($scope, $http, $window) {
 				console.log('Error: ' + data);
 			});
     };
+
+    $scope.removeInterest = function (index) {
+    	console.log(index);
+    	console.log(JSON.stringify($scope.user.interests));
+    	$scope.user.interests.splice(index,1);
+    	console.log(JSON.stringify($scope.user.interests));
+    }
+
+    $scope.cancelEdit = function () {
+    	$scope.user = jQuery.extend(true, {}, originalUser);
+    }
 });
