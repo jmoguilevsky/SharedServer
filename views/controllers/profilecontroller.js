@@ -1,4 +1,4 @@
-var userApp = angular.module('userApp', ['naif.base64']);
+var userApp = angular.module('userApp', []);
 
 userApp.controller('ProfileController', function ($scope, $http, $window) {
 	var re = /[^\/].*[\/]([0-9]*)+/; 
@@ -22,7 +22,6 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
         console.log("posting data...");
         var newUser = $scope.user;
         console.log(newUser);
-        debugger;
         $http.put('/users/'+ idUser, { 
         		user: newUser,
         		metadata: {

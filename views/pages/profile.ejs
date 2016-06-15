@@ -5,8 +5,6 @@
 
   <% include ../partials/header.ejs %>
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css" />
-  <script type="text/javascript" src="/node_modules/angular-base64-upload/src/angular-base64-upload.js"></script>
-  <script type="text/javascript" src="/node_modules/angular-base64-upload/index.js"></script>
   <script src="/controllers/profilecontroller.js"></script>
 
 </header>
@@ -23,15 +21,7 @@
           <form class="form-signin" ng-submit="editUser()" >
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <figure class="figure">
-                  <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
-                  <figcaption class="figure-caption" id="fileInput" style="visibility: hidden;">
-                    <label class="file">
-                      <input type="file" ng-model="user.photo_profile" onload="onload" base-sixty-four-input>
-                      <span class="file-custom"></span>
-                    </label>
-                  </figcaption>
-                </figure>
+                <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
               </div>
             </div>
             <div class="row">
