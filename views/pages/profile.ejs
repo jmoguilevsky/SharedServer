@@ -115,10 +115,10 @@
               <label for="inputCategory"></label>
               <input type="text" id="inputCategory" class="form-control editable" placeholder="Category"></input>
             </p>
-            <p>
-              <!--subject in results.subjects | filter:{grade:'C'}-->
+            <!--subject in results.subjects | filter:{grade:'C'}-->
               <!--<li ng-repeat="a in subjects"><a ng-click="dropboxitemselected(a)">{{a}}</a></li>
-              ng-repeat="value in categories" -->
+            -->
+            <p>
               <label for="inputValue"></label>
               <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -126,9 +126,9 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li>asd</li>
-                  <li>asd</li>
-                  <li>asd</li>
+                  <li ng-repeat="value in categories">
+                    {{value}}
+                  </li>
                 </ul>
               </div>
             </p>
