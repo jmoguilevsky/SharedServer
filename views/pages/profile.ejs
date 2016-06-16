@@ -155,6 +155,7 @@
     $("#fileInput").prop('style','');
     $("#btnAddInterest").prop('style','');
   });
+  
   $("#btnCancel").click(function () {
     $("#btnSubmit").hide();
     $("#btnCancel").hide();
@@ -163,6 +164,11 @@
     $("#fileInput").prop('style','visibility: hidden;');
     $("#btnAddInterest").prop('style','visibility: hidden;');
   });
+
+  $("#myModal").on('hidden.bs.modal', function () {
+      $("table tbody th").prop('style','');
+  });
+
   $(function () {
     $("#btnSubmit").hide();
     $("#btnCancel").hide();
