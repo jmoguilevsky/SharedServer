@@ -119,8 +119,8 @@
               <!--subject in results.subjects | filter:{grade:'C'}-->
               <label for="inputValue"></label>
               <ul class="dropdown-menu">
-                <li ng-repeat="value in categories['category']">
-                  <a ng-click="dropboxitemselected(a)">value</a>
+                <li ng-repeat="value in categories">
+                  {{ value }}
                 </li>
               </ul>
             </p>
