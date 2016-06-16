@@ -44,6 +44,7 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	$http.get('/interests/')
 	.success(function(interests) {
 		$scope.selectedCategory = '';
+		$scope.selectedValue = '';
 		$scope.categories = getDistinctElements(interests.interests);
 		$scope.dictInterestsByCategory = getDictionaryOfInterestsByCategory(interests.interests);
 		console.log($scope.categories);
@@ -83,5 +84,9 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 
 	$scope.selectCategory = function (category) {
 		$scope.selectedCategory = category;
+	}
+
+	$scope.selectValue = function (value) {
+		$scope.selectedValue = value;
 	}
 });

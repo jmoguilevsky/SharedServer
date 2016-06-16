@@ -130,12 +130,12 @@
             <p>
               <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownValue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Value
+                  {{ selectedValue != "" && (selectedValue) || ("Select Value") }}
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownValue">
                   <li ng-repeat="value in dictInterestsByCategory[selectedCategory]">
-                    {{value}}
+                    <a ng-click="selectValue(value)"> {{value}} </a>
                   </li>
                 </ul>
               </div>
