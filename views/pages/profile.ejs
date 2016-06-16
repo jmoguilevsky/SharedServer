@@ -110,7 +110,16 @@
           <h4 class="modal-title">Modal title</h4>
         </div>
         <div class="modal-body">
-          <p>One fine body&hellip;</p>
+          <form ng-submit="addInterest()">
+            <p>
+              <label for="inputCategory"></label>
+              <input type="text" id="inputCategory" class="form-control editable" placeholder="Category"></input>
+            </p>
+            <p>
+              <label for="inputValue"></label>
+              <input type="text" id="inputValue" class="form-control editable" placeholder="Value"></input>
+            </p>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
