@@ -31,7 +31,7 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 
 	$http.get('/interests/')
 	.success(function(data) {
-		$scope.interests = data.interests;
+		$scope.allInterests = data.interests;
 		$scope.categories = getDistinctElements(data.interests);
 		console.log($scope.categories);
 	})
