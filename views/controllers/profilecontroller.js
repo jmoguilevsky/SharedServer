@@ -11,6 +11,18 @@ function getDistinctElements(interests) {
 	return distinct;
 }
 
+function getDictionaryOfInterestsByCategory(interests) {
+	var categories = {};
+	interests.forEach(function (interest) {
+		if ( typeof(categories[interest.category]) == "undefined") {
+			categories[interest.category] = [interest.value];
+		}else{
+			categories[interest.category].push(interest.value);
+		}
+	});
+	return categories;
+}
+
 userApp.controller('ProfileController', function ($scope, $http, $window) {
 	var re = /[^\/].*[\/]([0-9]*)+/; 
 
@@ -32,7 +44,7 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	$http.get('/interests/')
 	.success(function(data) {
 		$scope.allInterests = data.interests;
-		$scope.categories = getDistinctElements(data.interests);
+		$scope.categories = getDictionaryOfInterestsByCategory(data.interests);
 		console.log($scope.categories);
 	})
 	.error(function(data) {
