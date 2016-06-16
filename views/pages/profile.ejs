@@ -109,40 +109,38 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Modal title</h4>
         </div>
-        <form ng-submit="addInterest()">
-          <div class="modal-body">
-            <p>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{ selectedCategory != "" && (selectedCategory) || ("Select Category") }}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownCategory">
-                  <li ng-repeat="category in categories">
-                    <a ng-click="selectCategory(category)"> {{category}} </a>
-                  </li>
-                </ul>
-              </div>
-            </p>
-            <p>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownValue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{ selectedValue != "" && (selectedValue) || ("Select Value") }}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownValue">
-                  <li ng-repeat="value in dictInterestsByCategory[selectedCategory]">
-                    <a ng-click="selectValue(value)"> {{value}} </a>
-                  </li>
-                </ul>
-              </div>
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+        <div class="modal-body">
+          <p>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{ selectedCategory != "" && (selectedCategory) || ("Select Category") }}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownCategory">
+                <li ng-repeat="category in categories">
+                  <a ng-click="selectCategory(category)"> {{category}} </a>
+                </li>
+              </ul>
+            </div>
+          </p>
+          <p>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownValue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{ selectedValue != "" && (selectedValue) || ("Select Value") }}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownValue">
+                <li ng-repeat="value in dictInterestsByCategory[selectedCategory]">
+                  <a ng-click="selectValue(value)"> {{value}} </a>
+                </li>
+              </ul>
+            </div>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="addInterest()">Save changes</button>
+        </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->

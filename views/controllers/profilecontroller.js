@@ -96,5 +96,7 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 			category: $scope.selectedCategory,
 			value: $scope.selectedValue
 		});
+		$scope.selectedCategory = '';
+		$scope.selectedValue = '';
 	}
 });
