@@ -42,13 +42,13 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	});
 
 	$http.get('/interests/')
-	.success(function(data) {
-		$scope.allInterests = data.interests;
-		$scope.categories = getDictionaryOfInterestsByCategory(data.interests);
+	.success(function(interests) {
+		$scope.allInterests = interests.interests;
+		$scope.categories = getDictionaryOfInterestsByCategory(interests.interests);
 		console.log($scope.categories);
 	})
-	.error(function(data) {
-		console.log('Error: ' + data);
+	.error(function(interests) {
+		console.log('Error: ' + interests);
 	});	
 
 	$scope.editUser = function() {
