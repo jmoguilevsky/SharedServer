@@ -42,14 +42,14 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	});
 
 	$http.get('/interests/')
-	.success(function(interests) {
+	.success(function(newInterests) {
 		$scope.selectedCategory = '';
 		$scope.selectedValue = '';
-		$scope.categories = getDistinctElements(interests.interests);
-		$scope.dictInterestsByCategory = getDictionaryOfInterestsByCategory(interests.interests);
+		$scope.categories = getDistinctElements(newInterests.interests);
+		$scope.dictInterestsByCategory = getDictionaryOfInterestsByCategory(newInterests.interests);
 		console.log($scope.categories);
 	})
-	.error(function(interests) {
+	.error(function(newInterests) {
 		console.log('Error: ' + interests);
 	});	
 
