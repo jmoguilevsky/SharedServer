@@ -79,7 +79,10 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	}
 
 	$scope.cancelEdit = function () {
-		$scope.user = jQuery.extend(true, {}, originalUser);
+		$scope.user.interests = jQuery.extend(true, {}, originalUser.interests);
+		$scope.user.name = jQuery.extend(true, {}, originalUser.name);
+		$scope.user.alias = jQuery.extend(true, {}, originalUser.alias);
+		$scope.user.sex = jQuery.extend(true, {}, originalUser.sex);
 	}
 
 	$scope.selectCategory = function (category) {
