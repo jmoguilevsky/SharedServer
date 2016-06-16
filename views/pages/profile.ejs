@@ -18,76 +18,74 @@
           <h3 class="card-title">{{ user.name }}</h3>
         </div>
         <div class="card-block">
-          <form class="form-signin" ng-submit="editUser()" >
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
-              </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <img alt="User Pic" width="450" src="{{ 'data:image; base64,' + user.photo_profile }}" class="figure-img img-fluid"> 
             </div>
-            <div class="row">
-              <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+          </div>
+          <div class="row">
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
 
-                <table class="table table-user-information">
-                  <tbody>
-                    <tr>
-                      <td >Email</td>
-                      <td>
-                        <input type="text" readonly="readonly" class="form-control"  id="inputEmail" placeholder="Email" ng-model="user.email">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="vertical-align: middle">Name</td>
-                      <td>
-                        <input type="text" readonly="readonly" class="form-control editable"  id="inputName" placeholder="Name" ng-model="user.name" required >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="vertical-align: middle">Alias</td>
-                      <td>
-                        <input type="text" readonly="readonly" class="form-control editable"  id="inputAlias" placeholder="Alias" ng-model="user.alias" required >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="vertical-align: middle" > Sex </td>
-                      <td >
-                        <input type="text" readonly="readonly" class="form-control editable"  id="inputSex" placeholder="Sex" ng-model="user.sex" required >
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>  
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td >Email</td>
+                    <td>
+                      <input type="text" readonly="readonly" class="form-control"  id="inputEmail" placeholder="Email" ng-model="user.email">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle">Name</td>
+                    <td>
+                      <input type="text" readonly="readonly" class="form-control editable"  id="inputName" placeholder="Name" ng-model="user.name" required >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle">Alias</td>
+                    <td>
+                      <input type="text" readonly="readonly" class="form-control editable"  id="inputAlias" placeholder="Alias" ng-model="user.alias" required >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle" > Sex </td>
+                    <td >
+                      <input type="text" readonly="readonly" class="form-control editable"  id="inputSex" placeholder="Sex" ng-model="user.sex" required >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
 
-              </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                <table class="table">
-                  <thead class="thead-default">
-                    <tr>
-                      <th> </th>
-                      <th>Category</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="interest in user.interests">
-                      <th scope="row" style="visibility: hidden;">
-                        <a href="#" ng-click="removeInterest($index)" class="pull-xs-left btn btn-sm btn-danger">
-                          Remove
-                        </a>
-                      </th>
-                      <td>{{ interest.category }}</td>
-                      <td>{{ interest.value }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <a href="#" style="visibility: hidden;" data-toggle="modal" data-target="#myModal" id="btnAddInterest" class="btn btn-primary">Add interest</a>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+              <table class="table">
+                <thead class="thead-default">
+                  <tr>
+                    <th> </th>
+                    <th>Category</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="interest in user.interests">
+                    <th scope="row" style="visibility: hidden;">
+                      <a href="#" ng-click="removeInterest($index)" class="pull-xs-left btn btn-sm btn-danger">
+                        Remove
+                      </a>
+                    </th>
+                    <td>{{ interest.category }}</td>
+                    <td>{{ interest.value }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="row" style="margin-top: 2%;margin-bottom: 2%">
-              <button class="value-input btn btn-lg btn-primary btn-block" id="btnSubmit" type="submit" >Save changes</button>
-              <button class="value-input btn btn-lg btn-primary btn-block" id="btnCancel" ng-click="cancelEdit()" >Cancel changes</button>
-            </div>
-          </form>
+            <a href="#" style="visibility: hidden;" data-toggle="modal" data-target="#myModal" id="btnAddInterest" class="btn btn-primary">Add interest</a>
+          </div>
+          <div class="row" style="margin-top: 2%;margin-bottom: 2%">
+            <button class="value-input btn btn-lg btn-primary btn-block" id="btnSubmit" ng-click="editUser()" >Save changes</button>
+            <button class="value-input btn btn-lg btn-primary btn-block" id="btnCancel" ng-click="cancelEdit()" >Cancel changes</button>
+          </div>
         </div>
         <div class="card-footer">
           <a href="#" id="editUser" data-original-title="Edit this user" title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">
@@ -164,7 +162,7 @@
   });
 
   $("#myModal").on('hidden.bs.modal', function () {
-      $("table tbody th").prop('style','');
+    $("table tbody th").prop('style','');
   });
 
   $(function () {
