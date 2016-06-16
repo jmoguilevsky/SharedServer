@@ -84,6 +84,7 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 
 	$scope.selectCategory = function (category) {
 		$scope.selectedCategory = category;
+		$scope.selectedValue = '';
 	}
 
 	$scope.selectValue = function (value) {
