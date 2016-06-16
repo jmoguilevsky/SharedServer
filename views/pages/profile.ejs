@@ -116,8 +116,13 @@
               <input type="text" id="inputCategory" class="form-control editable" placeholder="Category"></input>
             </p>
             <p>
+              <!--subject in results.subjects | filter:{grade:'C'}-->
               <label for="inputValue"></label>
-              <input type="text" id="inputValue" class="form-control editable" placeholder="Value"></input>
+              <ul class="dropdown-menu">
+                <li ng-repeat="value in categories['music / band']">
+                  <a ng-click="dropboxitemselected(a)">value</a>
+                </li>
+              </ul>
             </p>
           </form>
         </div>
