@@ -117,16 +117,20 @@
             </p>
             <p>
               <!--subject in results.subjects | filter:{grade:'C'}-->
-              <!-- ng-repeat="value in categories" -->
+              <!--<li ng-repeat="a in subjects"><a ng-click="dropboxitemselected(a)">{{a}}</a></li>
+              ng-repeat="value in categories" -->
               <label for="inputValue"></label>
-              <ul class="dropdown-menu">
-                <li >
-                   value
-                </li>
-                <li >
-                   value
-                </li>
-              </ul>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  selected
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li>asd</li>
+                  <li>asd</li>
+                  <li>asd</li>
+                </ul>
+              </div>
             </p>
           </form>
         </div>
