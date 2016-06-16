@@ -90,4 +90,11 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 	$scope.selectValue = function (value) {
 		$scope.selectedValue = value;
 	}
+
+	$scope.addInterest = function () {
+		$scope.user.interests.push({
+			category: $scope.selectedCategory,
+			value: $scope.selectedValue
+		});
+	}
 });
