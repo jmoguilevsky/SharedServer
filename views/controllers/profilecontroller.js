@@ -3,7 +3,7 @@ function getDistinctElements(interests) {
 	var unique = {};
 	var distinct = [];
 	for( var i in interests ){
-		if( typeof(unique[interests[i].category]) === undefined){
+		if( typeof(unique[interests[i].category]) == "undefined"){
 			distinct.push(interests[i].category);
 		}
 		unique[interests[i].category] = 0;
