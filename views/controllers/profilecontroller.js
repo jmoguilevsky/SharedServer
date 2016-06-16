@@ -43,8 +43,9 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 
 	$http.get('/interests/')
 	.success(function(interests) {
-		$scope.allInterests = interests.interests;
-		$scope.categories = getDictionaryOfInterestsByCategory(interests.interests);
+		$scope.selectedCategory = '';
+		$scope.categories = getDistinctElements(interests.interests);
+		$scope.dictInterestsByCategory = getDictionaryOfInterestsByCategory(interests.interests);
 		console.log($scope.categories);
 	})
 	.error(function(interests) {
@@ -78,5 +79,9 @@ userApp.controller('ProfileController', function ($scope, $http, $window) {
 
 	$scope.cancelEdit = function () {
 		$scope.user = jQuery.extend(true, {}, originalUser);
+	}
+
+	$scope.selectCategory = function (category) {
+		$scope.selectedCategory = category;
 	}
 });

@@ -112,21 +112,29 @@
         <div class="modal-body">
           <form ng-submit="addInterest()">
             <p>
-              <label for="inputCategory"></label>
-              <input type="text" id="inputCategory" class="form-control editable" placeholder="Category"></input>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  selected
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownCategory">
+                  <li ng-repeat="category in categories">
+                    <a ng-click="selectCategory(category)"> {{category}} </a>
+                  </li>
+                </ul>
+              </div>
             </p>
             <!--subject in results.subjects | filter:{grade:'C'}-->
               <!--<li ng-repeat="a in subjects"><a ng-click="dropboxitemselected(a)">{{a}}</a></li>
             -->
             <p>
-              <label for="inputValue"></label>
               <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  selected
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownValue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Value
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li ng-repeat="value in categories['category']">
+                <ul class="dropdown-menu" aria-labelledby="dropdownValue">
+                  <li ng-repeat="value in dictInterestsByCategory[selectedCategory]">
                     {{value}}
                   </li>
                 </ul>
