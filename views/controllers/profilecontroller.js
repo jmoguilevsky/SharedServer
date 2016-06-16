@@ -2,11 +2,11 @@ var userApp = angular.module('userApp', []);
 function getDistinctElements(interests) {
 	var unique = {};
 	var distinct = [];
-	for( var i in array ){
-		if( typeof(unique[array[i].category]) === undefined){
-			distinct.push(array[i].category);
+	for( var i in interests ){
+		if( typeof(unique[interests[i].category]) === undefined){
+			distinct.push(interests[i].category);
 		}
-		unique[array[i].category] = 0;
+		unique[interests[i].category] = 0;
 	}
 	return distinct;
 }
