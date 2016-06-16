@@ -81,7 +81,7 @@
                   </tbody>
                 </table>
               </div>
-              <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Add interest</a>
+              <a href="#" style="visibility: hidden;" data-toggle="modal" data-target="#myModal" id="btnAddInterest" class="btn btn-primary">Add interest</a>
             </div>
             <div class="row" style="margin-top: 2%;margin-bottom: 2%">
               <button class="value-input btn btn-lg btn-primary btn-block" id="btnSubmit" type="submit" >Save changes</button>
@@ -153,6 +153,7 @@
     $("form table tr td input.editable").prop('readonly','');
     $("table tbody th").prop('style','');
     $("#fileInput").prop('style','');
+    $("#btnAddInterest").prop('style','');
   });
   $("#btnCancel").click(function () {
     $("#btnSubmit").hide();
@@ -160,6 +161,7 @@
     $("form table tr td input.editable").prop('readonly','readonly');
     $("table tbody th").prop('style','visibility: hidden;');
     $("#fileInput").prop('style','visibility: hidden;');
+    $("#btnAddInterest").prop('style','visibility: hidden;');
   });
   $(function () {
     $("#btnSubmit").hide();
