@@ -56,7 +56,7 @@ module.exports = function() {
         items.forEach(function(item) {
             users.push(
                 formatUser(item)
-            );
+                );
         });
         return users;
     }
@@ -86,8 +86,11 @@ module.exports = function() {
                     response.send("Error " + err);
                 } else {
                     //response.send(result.rows) ;
-                    console.log(result);
-                    console.log('user');
+                    if (result.rowCount == 0) {
+                        console.log('no hay un user con id '+ idUser);
+                        response.status(400).send('');
+                        return;
+                    }
                     var user = result.rows[0];
                     console.log(user);
                     return addMetadataUser(response, formatUser(user));

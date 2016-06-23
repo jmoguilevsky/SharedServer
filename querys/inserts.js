@@ -44,8 +44,8 @@ module.exports = function() {
     }
 
     function queryInsertUser(user) {
-        return 'INSERT INTO UserProfile(name, alias, email, sex) ' +
-            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\', \'' + user.sex + '\')'
+        return 'INSERT INTO UserProfile(name, alias, email, sex, age) ' +
+            'VALUES (\'' + user.name + '\', \'' + user.alias + '\', \'' + user.email + '\', \'' + user.sex + '\', '+ user.age +')'
     }
 
     function queryInsertLocation(user, idUser) {
